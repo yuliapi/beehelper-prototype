@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BeeHelper</title>
+    <!--<link href="normalize.css-master/normalize.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="bootstrap-social.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,100,100italic,300,300italic,700,900&subset=latin,cyrillic-ext"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&subset=latin,latin-ext" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&subset=latin,cyrillic-ext" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+    <script src="https://use.fontawesome.com/ee57c8a0cc.js"></script>
+</head>
+<body>
+<header class="fixed-top">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="logo-holder col-2 col-sm-4 col-md-3">
+                <a href="./notuser-index.html" class="hidden-xs-down my-color">Bee Helper</a>
+                <a href="" class="logo hidden-sm-up my-color">BH</a>
+            </div>
+            <nav class="navbar name-holder col-8 col-sm-5 col-md-5">
+                <ul class="nav align-items-center">
+                    <li class="nav-item">
+                        <a href="" class="nav-link header-link my-color">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./user-profile.html" class="nav-link header-link my-color">
+                            Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn nav-link header-link my-color" type="button">Sign up</button>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="name-holder navbar navbar-toggleable-sm navbar-light col-5 col-sm-4 hidden-sm-down">
+                <ul class="nav ml-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link header-link my-color" href="#">Important info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link header-link my-color" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link header-link my-color" href="#">Contact us</a>
+                    </li>
+
+
+                </ul>
+            </nav>
+            <div class="dropdown col-2 col-sm-3 text-right hidden-md-up">
+                <a class="btn my-color" id="infoDropdown" type="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-bars fa-2x"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right my-color-inverse" aria-labelledby="infoDropdown">
+                    <a class="dropdown-item">Important info</a>
+                    <a class="dropdown-item">About us</a>
+                    <a class="dropdown-item">Contact us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-2 navbar sidebar-nav no-gutters p-0" role="navigation">
+                <ul class="nav flex-column no-gutters">
+                    <li class="nav-item sidebar active">
+                        <a href="./notuser-find.html" class="btn my-color">
+                            <i class="fa fa-search fa-3x mt-2"></i><br/>
+                            Find
+                        </a>
+                    </li>
+                    <li class="nav-item sidebar">
+                        <a href="./user-tasks.html" class="btn my-color">
+                            <i class="fa fa-tasks fa-3x mt-2"></i><br/>
+                            My Tasks
+                        </a>
+                    </li>
+                    <li class="nav-item sidebar">
+                        <a href="./user-help-me.html" class="btn my-color">
+                            <i class="fa fa-slideshare fa-3x mt-2"></i><br/>
+                            Help me
+                        </a>
+                    </li>
+                    <li class="nav-item sidebar">
+                        <a href="#" class="btn my-color">
+                            <i class="fa fa-users fa-3x mt-2"></i><br/>
+                            Meetups
+                        </a>
+                    </li>
+                    <!--<li class="nav-item sidebar">-->
+                    <!--<a href="./user-pending.html" class="btn my-color">-->
+                    <!--<i class="fa fa-comments fa-3x mt-2"></i><br/>-->
+                    <!--?Help?-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <li class="nav-item sidebar">
+                        <a href="./user-pending.html" class="btn my-color">
+                            <i class="fa fa-object-ungroup fa-3x mt-2"></i><br/>
+                            Friends
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <section class="col">
+                <div class="col-md-10 mx-auto mt-4" id="page-content">
+                    <h3>Matching search results: </h3>
+                    <div class="row">
+                        <div class="col-6 ml-3 sorter">
+                            <p class="d-inline-block">Show: </p>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                    All
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Professionals
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Not-professionals
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6 ml-3 sorter">
+                            <p class="d-inline-block">Sory by: </p>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                    Price
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Rating
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card help-entry my-4">
+                        <div class="card-header">
+                            <div class="row user-dash">
+                                <div class="col-md-4  align-self-center">
+                                    <h5> Анжела Львовна</h5>
+                                </div>
+                                <div class="col-md-4 align-self-center">
+                                    <p><em>Professional babysitter</em></p>
+                                </div>
+                                <div class="col-md-4 text-right align-self-center">
+                                    <button class="btn" type="button" data-toggle="modal"
+                                            data-target="#modalAuthRequired">View full profile
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-2 p-0">
+                                    <img src="http://placehold.it/150x150">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="row sorter mb-3">
+                                        <div class="col-7">
+                                            <div class="col">
+                                                <p class="d-inline-block">Рейтинг: </p>
+                                                <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                                                <p class="d-inline-block">(11)</p>
+                                                <button class="btn rating" type="button" data-toggle="popover"><i
+                                                        class="fa fa-caret-right" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col">
+                                                <p class="d-inline-block">Recommended by users (6)</p>
+                                                <button class="btn recomend" type="button" data-toggle="popover">
+                                                    <i class="fa fa-caret-right"
+                                                       aria-hidden="true"></i></button>
+                                            </div>
+                                            <div class="col">
+                                                <a data-toggle="collapse" href="#review-card" aria-expanded="false"
+                                                   aria-controls="review-card">Reviews (3) </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="col text-center">
+                                                <p>Price: 15$/hour</p>
+                                                <button class="btn" data-toggle="modal" data-target="#send-myHelp">
+                                                    Contact
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="review-card" class="collapse ml-3">
+                                                <div class="card p-2">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                            <img src="http://placehold.it/40x40"
+                                                                 class="d-block">
+                                                            <i class="fa fa-star-o d-inline-block"
+                                                               aria-hidden="true"></i>
+                                                            <i class="fa fa-star-o d-inline-block"
+                                                               aria-hidden="true"></i>
+                                                            <i class="fa fa-star-o d-inline-block"
+                                                               aria-hidden="true"></i>
+                                                        </div>
+                                                        <div class="col-10" style="border-left: .25rem solid #eceeef;">
+                                                            <div class="row">
+                                                                <div class="col text-right">
+                                                                    <p><em>Date: 22/03/2016</em></p>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
+                                                                adipiscing elit. Integer posuere erat a ante.
+                                                            </p>
+                                                            <div class="row">
+                                                                <p class="d-inline-block"><em>Babysitting</em></p>
+                                                                <p class="d-inline-block"><em>Total 3 tasks</em></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn-add-panel" href="#">Show next 3 ->>></a>
+                    <div class="saveRequest">
+                        <div class="inner">
+                            <p class="">If you didn't find help among search results you can</p>
+                            <div class="text-center">
+                                <a href="./user-help-me.html" role="button" class="btn-custom save&Visible">Save your
+                                    request and make it visible</a>
+                                <p class="d-inline-block pl-3 pr-3">or</p>
+                                <a href="./user-help-me.html" role="button" class="btn-custom saveForLater">Save your
+                                    help
+                                    request and try later</a>
+                            </div>
+                            <div class="text-right">
+                                <p class="small">Search request and rezulta will be deleted</p>
+                                <a href="./user-find.html" role="button" class="btn-custom">Discard search</a>
+                            </div>
+                        </div>
+                        <div class="hidden-xs-up inner">
+                            <p>You help request have been saved. You can view and edit it <a href="./user-help-me.html">here</a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+        <div class="row">
+            <footer class="col"></footer>
+        </div>
+    </div>
+    <template id="recommended-popover-content">
+        <div>
+            <table class="table m-0">
+                <tbody>
+                <tr>
+                    <td class="p-0">
+                        <div class="userpic-wrap d-inline-block">
+                            <div class="userpic-info">
+                                <div class="d-inline-flex user">
+                                    <a class="d-block" onmouseenter="showInfo(this)">
+                                        <img class="" src="http://placehold.it/32x32"></a>
+                                </div>
+                                <div class="d-inline-flex popover-username">
+                                    <p class="hidden-xs-up d-inline"><i class="fa fa-user"></i>UserName</p>
+                                    <p class="hidden-xs-up d-inline">some info</p>
+                                </div>
+
+
+                                <div class="comment">
+                                    <p class="hidden-xs-up text-justify">
+                                        <small>Sed congue dolorum an. Ei mollis persequeris per, te eum purto tincidunt.
+                                            In
+                                            malorum suscipit per. Dignissim liberavisse per ad, sed no atqui inciderint.
+                                            Te
+                                            his habeo
+                                            quaeque blandit. Malis lucilius deseruisse ex quo.
+                                        </small>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-0">
+                        <div class="userpic-wrap d-inline-block">
+                            <div class="userpic-info">
+
+                                <a class="d-inline-flex" onmouseenter="showInfo(this)">
+                                    <img class="" src="http://placehold.it/32x32"></a>
+
+                                <p class="hidden-xs-up text-justify comment">
+                                    <small>Sed congue dolorum an. Ei mollis persequeris per, te eum purto tincidunt. In
+                                        malorum suscipit per. Dignissim liberavisse per ad, sed no atqui inciderint. Te
+                                        his habeo
+                                        quaeque blandit. Malis lucilius deseruisse ex quo.
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-0">
+                        <div class="userpic-wrap d-inline-block">
+                            <div class="userpic-info no-comments">
+
+                                <a class="d-inline-flex" onmouseenter="showInfo(this)">
+                                    <img class="" src="http://placehold.it/32x32"></a>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </template>
+    <template id="rating-popover-content">
+        <div class="rating-popover">
+            <div class="row">
+                <div class="col-3">
+                    <a href="" class="m-0">5 stars</a>
+                </div>
+                <div class="col-6 p-0">
+                    <a href="">
+                        <progress value="82" max="100"></progress>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="" class="m-0">82%</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="" class="m-0">4 stars</a>
+                </div>
+                <div class="col-6 p-0">
+                    <a href="">
+                        <progress value="18" max="100"></progress>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="" class="m-0">18%</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="" class="m-0">3 stars</a>
+                </div>
+                <div class="col-6 p-0">
+                    <a href="">
+                        <progress value="0" max="100"></progress>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="" class="m-0">0%</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="" class="m-0">2 stars</a>
+                </div>
+                <div class="col-6 p-0">
+                    <a href="">
+                        <progress value="0 max=" 100
+                        "></progress>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="" class="m-0">0%</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="" class="m-0">1 star</a>
+                </div>
+                <div class="col-6 p-0">
+                    <a href="">
+                        <progress value="0" max="100"></progress>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="" class="m-0">0%</a>
+                </div>
+            </div>
+
+        </div>
+    </template>
+
+</main>
+<!-- Modal -->
+<div class="modal fade" id="send-myHelp" tabindex="-1" role="dialog" aria-labelledby="send-myHelpLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="send-myHelpLabel">Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <p>To: Анжела Львовна</p>
+                    <div class="form-group">
+                        <textarea class="form-control" id="message-myHelp"
+                                  placeholder="help description will be here"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label my-label">Say more (optional)</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p class="small">After sending message your help request will be saved automatically.</p>
+                <button type="button" class="btn btn-primary sendBtn">Send message</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard and close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="success-message hidden-xs-up">
+    <i class="fa fa-check-circle fa-3x" aria-hidden="true"></i>
+    <p>Your message have been sent. You can view it <a href="./user-pending.html">here</a></p>
+    <p>Your help request was saved. You can view and edit it <a href="./user-help-me.html">here</a></p>
+</div>
+<div class="modal fade" id="modalAuthRequired" tabindex="-1" role="dialog" aria-labelledby="authRequired"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="authRequired">
+            <div class="modal-body">
+                <p>This information available only for authorized users</p>
+                <div class="row">
+                    <div class="col-6 border-right">
+                        <form>
+                            <fieldset>
+                                <legend>Login</legend>
+                                <div class="form-group m-0">
+                                    <label for="loginEmail-input" class="my-label"></label>
+                                    <input id="loginEmail-input" class="input-group" placeholder="Email" onblur="emailNotRegistered(this)">
+                                </div>
+                                <div class="form-group m-0">
+                                    <label for="loginPass-input" class="my-label"></label>
+                                    <input id="loginPass-input" class="input-group" placeholder="Password">
+                                </div>
+                                <p class="hidden-xs-up">No account found for this email. Check email or </p>
+
+                            </fieldset>
+                            <div class="form-check hidden-xs-up">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input">
+                                   <small>I have read and agree with <a href="#">Terms and Conditions</a></small>
+                                </label>
+                            </div>
+                            <button class="btn hidden-xs-up">
+                                    <!--type="button" data-toggle="modal" data-target="#modalRegistration"-->Log in</button>
+                        </form>
+                    </div>
+                    <div class="col-6 align-bottom mt-3">
+                        <a class="btn btn-social btn-facebook"
+                           href="#"> Login with Facebook
+                            <i class="fa fa-facebook"></i>
+                        </a>
+
+                        <a class=" btn btn-social btn-google"
+                           href="#">Login with
+                            Google
+                            <i class="fa fa-google"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="modal fade" id="modalRegistration" tabindex="-1" role="dialog" aria-labelledby="registration"-->
+     <!--aria-hidden="true">-->
+    <!--<div class="modal-dialog" role="document">-->
+        <!--<div class="modal-"-->
+    <!--</div>-->
+<!--</div>-->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<script src="datepicker/js/bootstrap-datepicker.js"></script>
+<script src="custom.js"></script>
+</body>
+</html>

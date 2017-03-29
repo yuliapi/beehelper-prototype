@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BeeHelper</title>
+    <!--<link href="normalize.css-master/normalize.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="general.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,100,100italic,300,300italic,700,900&subset=latin,cyrillic-ext"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&subset=latin,latin-ext" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&subset=latin,cyrillic-ext" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+    <script src="https://use.fontawesome.com/ee57c8a0cc.js"></script>
+</head>
+<body>
+<header class="fixed-top">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="logo-holder col-2 col-sm-4 col-md-3">
+                <a href="./index-user.html" class="hidden-xs-down my-color">Bee Helper</a>
+                <a href="" class="logo hidden-sm-up my-color">BH</a>
+            </div>
+            <nav class="navbar name-holder col-8 col-sm-5 col-md-5">
+                <ul class="nav align-items-center">
+                    <li class="nav-item">
+                        <a href="" class="nav-link header-link my-color">
+                            <span>
+                        <img src="images/cat.gif">
+                        </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./user-profile.html" class="nav-link header-link my-color">
+                            Yulia Pishchulina</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn nav-link header-link my-color" type="button">Sign out</button>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="name-holder navbar navbar-toggleable-sm navbar-light col-5 col-sm-4 hidden-sm-down">
+                <ul class="nav ml-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link header-link my-color" href="#">Important info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link header-link my-color" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link header-link my-color" href="#">Contact us</a>
+                    </li>
+
+
+                </ul>
+            </nav>
+            <div class="dropdown col-2 col-sm-3 text-right hidden-md-up">
+                <a class="btn my-color" id="infoDropdown" type="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-bars fa-2x"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right my-color-inverse" aria-labelledby="infoDropdown">
+                    <a class="dropdown-item">Important info</a>
+                    <a class="dropdown-item">About us</a>
+                    <a class="dropdown-item">Contact us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-2 navbar sidebar-nav no-gutters p-0" role="navigation">
+                <ul class="nav flex-column no-gutters">
+                    <li class="nav-item sidebar">
+                        <a href="./user-find.html" class="btn my-color">
+                            <i class="fa fa-search fa-3x mt-2"></i><br/>
+                            Find
+                        </a>
+                    </li>
+                    <li class="nav-item sidebar">
+                        <a href="./user-tasks.html" class="btn my-color">
+                            <i class="fa fa-tasks fa-3x mt-2"></i><br/>
+                            My Tasks
+                        </a>
+                    </li>
+                    <li class="nav-item sidebar">
+                        <a href="./user-help-me.html" class="btn my-color">
+                            <i class="fa fa-slideshare fa-3x mt-2"></i><br/>
+                            Help me
+                        </a>
+                    </li>
+                    <li class="nav-item sidebar">
+                        <a href="./user-meetup.html" class="btn my-color">
+                            <i class="fa fa-users fa-3x mt-2"></i><br/>
+                            Meetups
+                        </a>
+                    </li>
+                    <!--<li class="nav-item sidebar active">-->
+                        <!--<a href="./user-pending.html" class="btn my-color">-->
+                            <!--<i class="fa fa-comments fa-3x mt-2"></i><br/>-->
+                            <!--?Help?-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <li class="nav-item sidebar">
+                        <a href="./user-pending.html" class="btn my-color">
+                            <i class="fa fa-object-ungroup fa-3x mt-2"></i><br/>
+                            Friends
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <div class="col">
+                <div class="col-md-10 mx-auto mt-4" id="page-content">
+                    <div class="row">
+                        <div class="d-inline-block ml-3 sorter">
+                            <p class="d-inline-block">Show: </p>
+                            <button class="btn btn-custom active" type="button">
+                                Actual
+                            </button>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                    All
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Tasks
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Requests
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Partly done
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="d-inline-block ml-3 sorter">
+                            <p class="d-inline-block">Show: </p>
+                            <button class="btn btn-custom" type="button">
+                                Past
+                            </button>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                    All
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Completed
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Canceled
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card help-entry my-4">
+                        <div class="card-header">
+                            <div class="row user-dash">
+                                <div class="col-md-4  align-self-center">
+                                    <h5 class="mb-0">I need</h5>
+                                </div>
+                                <div class="col-md-3 align-self-center">
+                                    <h5 class="mb-0">Babysitting</h5>
+                                </div>
+
+                                <div class="col text-right">
+
+                                    <a class="btn visibilityToggler"
+                                       data-toggle="button"
+                                       aria-pressed="true" autocomplete="off"><i class="fa fa-eye"
+                                                                                 aria-hidden="true"></i>
+                                    </a>
+                                    <button class="btn ml-0" type="button">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                        Search again
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="calendar-wrapper">
+                                    <div class="calendar-header py-2">
+                                        <p class="m-0">March 2017</p>
+                                    </div>
+                                    <div class="calendar-body p-2">
+                                        <div class="row weekdays ">
+                                            <div class="col-xs-1"><p class="small">S</p></div>
+                                            <div class="col-xs-1"><p class="small">M</p></div>
+                                            <div class="col-xs-1"><p class="small">T</p></div>
+                                            <div class="col-xs-1"><p class="small">W</p></div>
+                                            <div class="col-xs-1"><p class="small">T</p></div>
+                                            <div class="col-xs-1"><p class="small">F</p></div>
+                                            <div class="col-xs-1"><p class="small">S</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p class="disabled">26</p></div>
+                                            <div class="col-xs-1"><p class="disabled">27</p></div>
+                                            <div class="col-xs-1"><p class="disabled">28</p></div>
+                                            <div class="col-xs-1"><p>1</p></div>
+                                            <div class="col-xs-1"><p>2</p></div>
+                                            <div class="col-xs-1"><p>3</p></div>
+                                            <div class="col-xs-1"><p>4</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>5</p></div>
+                                            <div class="col-xs-1"><p>6</p></div>
+                                            <div class="col-xs-1"><p>7</p></div>
+                                            <div class="col-xs-1"><p>8</p></div>
+                                            <div class="col-xs-1"><p>9</p></div>
+                                            <div class="col-xs-1"><p>10</p></div>
+                                            <div class="col-xs-1"><p>11</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>12</p></div>
+                                            <div class="col-xs-1"><p>13</p></div>
+                                            <div class="col-xs-1"><p>14</p></div>
+                                            <div class="col-xs-1"><p>15</p></div>
+                                            <div class="col-xs-1"><p>16</p></div>
+                                            <div class="col-xs-1"><p>17</p></div>
+                                            <div class="col-xs-1"><p>18</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>19</p></div>
+                                            <div class="col-xs-1 selected"><p>20</p></div>
+                                            <div class="col-xs-1 selected"><p>21</p></div>
+                                            <div class="col-xs-1 selected"><p>22</p></div>
+                                            <div class="col-xs-1 selected"><p>23</p></div>
+                                            <div class="col-xs-1 selected"><p>24</p></div>
+                                            <div class="col-xs-1"><p>25</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>26</p></div>
+                                            <div class="col-xs-1"><p>27</p></div>
+                                            <div class="col-xs-1 selected"><p>28</p></div>
+                                            <div class="col-xs-1 selected"><p>29</p></div>
+                                            <div class="col-xs-1"><p>30</p></div>
+                                            <div class="col-xs-1"><p>31</p></div>
+                                            <div class="col-xs-1"><p class="disabled">1</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row sorter mb-3">
+                                        <div class="col-7">
+                                            <p class=""><strong>Total: </strong>7 days</p>
+                                            <p class="d-inline-block"><strong>Time: </strong>17.00 - 22.00</p>
+                                            <div class="">
+                                                <p class="d-inline-block mr-2"><strong>Location: </strong>ул.
+                                                    Сеноманская 16</p>
+                                                <a class="d-inline-block" href="#">map</a>
+                                            </div>
+
+                                            <a class="" data-toggle="collapse"
+                                               href="#viewHelp-1"
+                                               aria-expanded="false" aria-controls="viewHelp-1"
+                                               data-parent="" data-whatever="">
+                                                View full help-information
+                                            </a>
+
+                                        </div>
+                                        <div class="col-5">
+
+                                            <div class="col text-center">
+                                                <button class="btn mt-3" data-toggle="collapse"
+                                                        href="#"
+                                                        aria-expanded="false" aria-controls=""
+                                                        data-parent="myHelp-1" data-whatever="">
+                                                    <i class="fa fa-comments-o mr-2"></i>
+                                                    <strong>(0)</strong> Discussions
+                                                </button>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col">
+                                            <div class="card-block collapse" id="viewHelp-1">
+                                                <p>
+                                                    Eu mea rebum rationibus, sea feugiat definitiones et.
+                                                </p>
+                                                <p>Sed et
+                                                    labores debitis, utamur regione an has. No liber albucius nec, id
+                                                    pro
+                                                    laudem
+                                                    impedit. Facilisis scripserit consequuntur sit ne, vix recusabo
+                                                    erroribus
+                                                    et.</p>
+                                                <p>Ad oratio recteque instructior per, veri sadipscing cu cum. Mea an
+                                                    putant</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card help-entry my-4">
+                        <div class="card-header">
+                            <div class="row user-dash">
+                                <div class="col-md-4  align-self-center">
+                                    <h5 class="mb-0">Request </h5>
+                                </div>
+                                <div class="col-md-3 align-self-center">
+                                    <h5 class="mb-0">Babysitting</h5>
+                                </div>
+
+                                <div class="col text-right">
+                                    <button class="btn ml-0" type="button">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                        Search again
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="calendar-wrapper">
+                                    <div class="calendar-header py-2">
+                                        <p class="m-0">March 2017</p>
+                                    </div>
+                                    <div class="calendar-body p-2">
+                                        <div class="row weekdays ">
+                                            <div class="col-xs-1"><p class="small">S</p></div>
+                                            <div class="col-xs-1"><p class="small">M</p></div>
+                                            <div class="col-xs-1"><p class="small">T</p></div>
+                                            <div class="col-xs-1"><p class="small">W</p></div>
+                                            <div class="col-xs-1"><p class="small">T</p></div>
+                                            <div class="col-xs-1"><p class="small">F</p></div>
+                                            <div class="col-xs-1"><p class="small">S</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p class="disabled">26</p></div>
+                                            <div class="col-xs-1"><p class="disabled">27</p></div>
+                                            <div class="col-xs-1"><p class="disabled">28</p></div>
+                                            <div class="col-xs-1"><p>1</p></div>
+                                            <div class="col-xs-1"><p>2</p></div>
+                                            <div class="col-xs-1"><p>3</p></div>
+                                            <div class="col-xs-1"><p>4</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>5</p></div>
+                                            <div class="col-xs-1"><p>6</p></div>
+                                            <div class="col-xs-1"><p>7</p></div>
+                                            <div class="col-xs-1"><p>8</p></div>
+                                            <div class="col-xs-1"><p>9</p></div>
+                                            <div class="col-xs-1"><p>10</p></div>
+                                            <div class="col-xs-1"><p>11</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>12</p></div>
+                                            <div class="col-xs-1"><p>13</p></div>
+                                            <div class="col-xs-1"><p>14</p></div>
+                                            <div class="col-xs-1"><p>15</p></div>
+                                            <div class="col-xs-1"><p>16</p></div>
+                                            <div class="col-xs-1"><p>17</p></div>
+                                            <div class="col-xs-1"><p>18</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>19</p></div>
+                                            <div class="col-xs-1 selected"><p>20</p></div>
+                                            <div class="col-xs-1 selected"><p>21</p></div>
+                                            <div class="col-xs-1 selected"><p>22</p></div>
+                                            <div class="col-xs-1 selected"><p>23</p></div>
+                                            <div class="col-xs-1 selected"><p>24</p></div>
+                                            <div class="col-xs-1"><p>25</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>26</p></div>
+                                            <div class="col-xs-1"><p>27</p></div>
+                                            <div class="col-xs-1 selected"><p>28</p></div>
+                                            <div class="col-xs-1 selected"><p>29</p></div>
+                                            <div class="col-xs-1"><p>30</p></div>
+                                            <div class="col-xs-1"><p>31</p></div>
+                                            <div class="col-xs-1"><p class="disabled">1</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row sorter mb-3">
+                                        <div class="col-6">
+                                            <p class=""><strong>Total: </strong>7 days</p>
+                                            <p class="d-inline-block"><strong>Time: </strong>17.00 - 22.00</p>
+                                            <div class="">
+                                                <p class="d-inline-block mr-2"><strong>Location: </strong>ул.
+                                                    Сеноманская 16</p>
+                                                <a class="d-inline-block" href="#">map</a>
+                                            </div>
+
+                                            <a class="" data-toggle="collapse"
+                                               href="#viewHelp-1"
+                                               aria-expanded="false" aria-controls="viewHelp-1"
+                                               data-parent="" data-whatever="">
+                                                View full help-information
+                                            </a>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="col text-center">
+                                                <p class="text-warning">Исполнитель User K was declined</p>
+                                                <p class="text-success">Waiting for confirmation from User T</p>
+                                                <p class="text-success">Исполнитель UserS is ready to do it</p>
+                                                <button class="btn">
+                                                    Confirm User S
+                                                </button>
+                                                <button class="btn mt-3" data-toggle="collapse" data-target="#viewPending-2" aria-expanded="false">
+                                                    <i class="fa fa-comments-o mr-2"></i>
+                                                    <strong>(3)</strong>Discussions
+                                                    <span class="badge badge-default"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-block collapse" id="viewPending-2">
+                            <div class="row">
+                                <div class="col-md-3 card-aside">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link active py-0 pr-0" role="button"
+                                               data-toggle="collapse"
+                                               href="#userk"
+                                               aria-expanded="true">User K
+                                                <button type="button" class="btn float-right help-status"
+                                                        data-container="body"
+                                                        data-toggle="popover" data-placement="top"
+                                                        data-content="confirmed by Катерина"><i class="fa fa-check"
+                                                                                                aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-0 pr-0" role="button" data-toggle="collapse"
+                                               href="#userT" aria-expanded="true">User T
+                                                <button type="button" class="btn float-right help-status"
+                                                        data-container="body"
+                                                        data-toggle="popover" data-placement="top"
+                                                        data-content="declined by Иванна"><i class="fa fa-times"
+                                                                                             aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-0 pr-0" role="button" data-toggle="collapse"
+                                               href="#userS" aria-expanded="true">User S
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                <button type="button" class="btn float-right help-status"
+                                                        data-container="body"
+                                                        data-toggle="popover" data-placement="top"
+                                                        data-content="no help status"><i class="fa fa-check"
+                                                                                         aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-9 collapse show" id="userk">
+                                    <div class="card  p-0 mb-2">
+                                        <div class="card-header py-0 other-user">
+                                            <button class="btn btn-icon"><i class="fa fa-user mr-2"
+                                                                            aria-hidden="true"></i>
+                                                User K
+                                            </button>
+
+
+                                            <button class="btn disabled" data-whatever="">Confirm</button>
+                                            <button class="btn declined" data-whatever="">Declined</button>
+
+
+                                        </div>
+                                        <div class="card-block">
+                                            <button type="button" class="btn help-status" data-container="body"
+                                                    data-toggle="popover" data-placement="top"
+                                                    data-content="User's help status"><i class="fa fa-check"
+                                                                                         aria-hidden="true"></i>
+                                            </button>
+                                            <p class="d-inline-block">User K confirmed this help</p>
+                                        </div>
+                                        <div class="messages">
+                                            <div class="card p-0 my-2 own-message">
+                                                <div class="card-header">
+                                                    <p class="d-inline-block m-0">Yulia Pishchulina</p>
+                                                    <p class="d-inline-block m-0 float-right small"><em>Sent:
+                                                        20/03/2017 15:21</em></p>
+                                                </div>
+                                                <div class="card-block">
+                                                    You have sent your "need help" request with attached message:
+                                                    <blockquote class="blockquote">
+                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer posuere erat a ante.</p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+
+                                            <div class="card p-0 my-2 other-message">
+                                                <div class="card-header  other-user">
+                                                    <p class="d-inline-block m-0">Катерина</p>
+                                                    <p class="d-inline-block m-0 float-right small"><em>Sent: 20/03/2017
+                                                        15:45</em></p>
+                                                </div>
+                                                <div class="card-block">
+                                                    <p>Hi, I have recieve your help-request. I have some
+                                                        questions
+                                                        to discuss:</p>
+                                                    <p>Question #1............</p>
+                                                    <p>Question #2............</p>
+                                                    <p>Question #3............</p>
+                                                    <button class="btn my-color writeAnswer">Respond</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-9 collapse" id="userT">
+                                    <div class="card  p-0 mb-2">
+                                        <div class="card-header py-0 other-user">
+                                            <button class="btn btn-icon"><i class="fa fa-user mr-2"
+                                                                            aria-hidden="true"></i>
+                                               User T
+                                            </button>
+                                            <button class="btn confirmed" data-whatever="">Confirmed</button>
+                                            <button class="btn disabled" data-whatever="">Decline</button>
+                                        </div>
+                                        <div class="card-block">
+                                            <button type="button" class="btn help-status" data-container="body"
+                                                    data-toggle="popover" data-placement="top"
+                                                    data-content="User's help status"><i class="fa fa-times"
+                                                                                         aria-hidden="true"></i>
+                                            </button>
+                                            <p class="d-inline-block">User Иванна declined this help</p>
+                                        </div>
+                                        <div class="messages">
+                                            <div class="card p-0 my-2 own-message">
+                                                <div class="card-header py-0">
+                                                    <p class="d-inline-block">Yulia Pishchulina</p>
+                                                    <p class="d-inline-block float-right small"><em>Sent:
+                                                        20/03/2017 15:21</em></p>
+                                                </div>
+                                                <div class="card-block">
+                                                    You have sent your "need help" request with attached message:
+                                                    <blockquote class="blockquote">
+                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer posuere erat a ante.</p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <template class="composeResponseTemplate">
+                                        <div class="card p-0 my-2 own-message outbox">
+                                            <div class="card-header">
+                                                <p class="d-inline-block m-0">Yulia
+                                                    Pishchulina</p>
+                                            </div>
+                                            <div class="card-block">
+                                                <form>
+                                                    <div class='form-group'>
+
+                                                                    <textarea id='type-answer' name="info"
+                                                                              class="form-control"
+                                                                              rows='5'
+                                                                              placeholder="Write your message"></textarea>
+                                                    </div>
+                                                    <button type="button" class="btn my-color sendAnswer">
+                                                        Send
+                                                    </button>
+                                                    <button type="button" class="btn my-color sendAnswer">
+                                                        Cancel
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template class="showMyResponseTemplate">
+                                        <div class="card-header">
+                                            <p class="d-inline-block m-0">Yulia Pishchulina</p>
+                                            <p class="d-inline-block m-0 float-right small"><em>Sent:
+                                                20/03/2017 18:45</em></p>
+                                        </div>
+                                        <div class="card-block">
+                                            <p class="card-text"></p>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div class="col-md-9 collapse" id="userS">
+                                    <div class="card  p-0 mb-2">
+                                        <div class="card-header py-0 other-user">
+                                            <button class="btn btn-icon"><i class="fa fa-user mr-2"
+                                                                            aria-hidden="true"></i>
+                                                UserS
+                                            </button>
+                                            <button class="btn" data-whatever="">Confirm</button>
+                                            <button class="btn" data-whatever="">Decline</button>
+                                        </div>
+                                        <div class="card-block">
+                                            <button type="button" class="btn help-status" data-container="body"
+                                                    data-toggle="popover" data-placement="top"
+                                                    data-content="User's help status"><i class="fa fa-check"
+                                                                                         aria-hidden="true"></i>
+                                            </button>
+                                            <p class="d-inline-block">UserS confirmed this help</p>
+                                        </div>
+                                        <div class="messages">
+                                            <div class="card p-0 my-2 own-message">
+                                                <div class="card-header py-0">
+                                                    <p class="d-inline-block">Yulia Pishchulina</p>
+                                                    <p class="d-inline-block float-right small"><em>Sent:
+                                                        20/03/2017 15:21</em></p>
+                                                </div>
+                                                <div class="card-block">
+                                                    You have sent your "need help" request with attached
+                                                    message:
+                                                    <blockquote class="blockquote">
+                                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer posuere erat a ante.</p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card help-entry my-4">
+                        <div class="card-header">
+                            <div class="row user-dash">
+                                <div class="col-md-4  align-self-center">
+                                    <h5 class="mb-0">Task Babysitting</h5>
+                                </div>
+                                <div class="col text-right">
+                                    <button class="btn ml-0" type="button">
+                                        <p class="d-inline-block mb-0">Исполнитель: </p>
+                                        <button class="btn">
+                                            <i class="fa fa-user mr-2"></i>
+                                            Leo
+                                        </button>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="calendar-wrapper">
+                                    <div class="calendar-header py-2">
+                                        <p class="m-0">March 2017</p>
+                                    </div>
+                                    <div class="calendar-body p-2">
+                                        <div class="row weekdays ">
+                                            <div class="col-xs-1"><p class="small">S</p></div>
+                                            <div class="col-xs-1"><p class="small">M</p></div>
+                                            <div class="col-xs-1"><p class="small">T</p></div>
+                                            <div class="col-xs-1"><p class="small">W</p></div>
+                                            <div class="col-xs-1"><p class="small">T</p></div>
+                                            <div class="col-xs-1"><p class="small">F</p></div>
+                                            <div class="col-xs-1"><p class="small">S</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p class="disabled">26</p></div>
+                                            <div class="col-xs-1"><p class="disabled">27</p></div>
+                                            <div class="col-xs-1"><p class="disabled">28</p></div>
+                                            <div class="col-xs-1"><p>1</p></div>
+                                            <div class="col-xs-1"><p>2</p></div>
+                                            <div class="col-xs-1"><p>3</p></div>
+                                            <div class="col-xs-1"><p>4</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>5</p></div>
+                                            <div class="col-xs-1"><p>6</p></div>
+                                            <div class="col-xs-1"><p>7</p></div>
+                                            <div class="col-xs-1"><p>8</p></div>
+                                            <div class="col-xs-1"><p>9</p></div>
+                                            <div class="col-xs-1"><p>10</p></div>
+                                            <div class="col-xs-1"><p>11</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>12</p></div>
+                                            <div class="col-xs-1"><p>13</p></div>
+                                            <div class="col-xs-1"><p>14</p></div>
+                                            <div class="col-xs-1"><p>15</p></div>
+                                            <div class="col-xs-1"><p>16</p></div>
+                                            <div class="col-xs-1"><p>17</p></div>
+                                            <div class="col-xs-1"><p>18</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>19</p></div>
+                                            <div class="col-xs-1 selected"><p>20</p></div>
+                                            <div class="col-xs-1 selected"><p>21</p></div>
+                                            <div class="col-xs-1 selected"><p>22</p></div>
+                                            <div class="col-xs-1 selected"><p>23</p></div>
+                                            <div class="col-xs-1 selected"><p>24</p></div>
+                                            <div class="col-xs-1"><p>25</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>26</p></div>
+                                            <div class="col-xs-1"><p>27</p></div>
+                                            <div class="col-xs-1 selected"><p>28</p></div>
+                                            <div class="col-xs-1 selected"><p>29</p></div>
+                                            <div class="col-xs-1"><p>30</p></div>
+                                            <div class="col-xs-1"><p>31</p></div>
+                                            <div class="col-xs-1"><p class="disabled">1</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row sorter mb-3">
+                                        <div class="col-7">
+                                            <p class=""><strong>Total: </strong>7 days</p>
+                                            <p class="d-inline-block"><strong>Time: </strong>17.00 - 22.00</p>
+                                            <div class="">
+                                                <p class="d-inline-block mr-2"><strong>Location: </strong>ул.
+                                                    Сеноманская 16</p>
+                                                <a class="d-inline-block" href="#">map</a>
+                                            </div>
+
+                                            <a class="" data-toggle="collapse"
+                                               href="#viewHelp-1"
+                                               aria-expanded="false" aria-controls="viewHelp-1"
+                                               data-parent="" data-whatever="">
+                                                View full help-information
+                                            </a>
+
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="col text-center">
+                                                <button class="btn sorter">
+                                                    Decline Leo
+                                                </button>
+                                                <button class="btn sorter mt-3" data-toggle="modal"
+                                                        data-target="#rateAndDecline">
+                                                    Cancel Task
+                                                </button>
+                                                <button class="btn mt-3" data-toggle="collapse"
+                                                        href="#"
+                                                        aria-expanded="false" aria-controls=""
+                                                        data-parent="myHelp-1" data-whatever="">
+                                                    <i class="fa fa-comments mr-2"></i>
+                                                    Discussions
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <div class="col">
+                                            <div class="card-block collapse" id="viewHelp-1">
+                                                <p>
+                                                    Eu mea rebum rationibus, sea feugiat definitiones et.
+                                                </p>
+                                                <p>Sed et
+                                                    labores debitis, utamur regione an has. No liber albucius nec, id
+                                                    pro
+                                                    laudem
+                                                    impedit. Facilisis scripserit consequuntur sit ne, vix recusabo
+                                                    erroribus
+                                                    et.</p>
+                                                <p>Ad oratio recteque instructior per, veri sadipscing cu cum. Mea an
+                                                    putant</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card help-entry my-4">
+                        <div class="card-header">
+                            <div class="row user-dash">
+                                <div class="col-md-4  align-self-center">
+                                    <h5 class="mb-0 text-success">Completed Babysitting</h5>
+                                </div>
+                                <div class="col text-right">
+                                    <button class="btn ml-0" type="button">
+                                        <p class="d-inline-block mb-0">Исполнитель: </p>
+                                        <button class="btn">
+                                            <i class="fa fa-user mr-2"></i>
+                                            Leo
+                                        </button>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="calendar-wrapper">
+                                    <div class="calendar-header py-2">
+                                        <p class="m-0">March 2017</p>
+                                    </div>
+                                    <div class="calendar-body p-2">
+                                        <div class="row weekdays ">
+                                            <div class="col-xs-1"><p class="small">S</p></div>
+                                            <div class="col-xs-1"><p class="small">M</p></div>
+                                            <div class="col-xs-1"><p class="small">T</p></div>
+                                            <div class="col-xs-1"><p class="small">W</p></div>
+                                            <div class="col-xs-1"><p class="small">T</p></div>
+                                            <div class="col-xs-1"><p class="small">F</p></div>
+                                            <div class="col-xs-1"><p class="small">S</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p class="disabled">26</p></div>
+                                            <div class="col-xs-1"><p class="disabled">27</p></div>
+                                            <div class="col-xs-1"><p class="disabled">28</p></div>
+                                            <div class="col-xs-1"><p>1</p></div>
+                                            <div class="col-xs-1"><p>2</p></div>
+                                            <div class="col-xs-1"><p>3</p></div>
+                                            <div class="col-xs-1"><p>4</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>5</p></div>
+                                            <div class="col-xs-1"><p>6</p></div>
+                                            <div class="col-xs-1"><p>7</p></div>
+                                            <div class="col-xs-1"><p>8</p></div>
+                                            <div class="col-xs-1"><p>9</p></div>
+                                            <div class="col-xs-1"><p>10</p></div>
+                                            <div class="col-xs-1"><p>11</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>12</p></div>
+                                            <div class="col-xs-1"><p>13</p></div>
+                                            <div class="col-xs-1"><p>14</p></div>
+                                            <div class="col-xs-1"><p>15</p></div>
+                                            <div class="col-xs-1"><p>16</p></div>
+                                            <div class="col-xs-1"><p>17</p></div>
+                                            <div class="col-xs-1"><p>18</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>19</p></div>
+                                            <div class="col-xs-1 selected"><p>20</p></div>
+                                            <div class="col-xs-1 selected"><p>21</p></div>
+                                            <div class="col-xs-1 selected"><p>22</p></div>
+                                            <div class="col-xs-1 selected"><p>23</p></div>
+                                            <div class="col-xs-1 selected"><p>24</p></div>
+                                            <div class="col-xs-1"><p>25</p></div>
+                                        </div>
+                                        <div class="row dates">
+                                            <div class="col-xs-1"><p>26</p></div>
+                                            <div class="col-xs-1"><p>27</p></div>
+                                            <div class="col-xs-1 selected"><p>28</p></div>
+                                            <div class="col-xs-1 selected"><p>29</p></div>
+                                            <div class="col-xs-1"><p>30</p></div>
+                                            <div class="col-xs-1"><p>31</p></div>
+                                            <div class="col-xs-1"><p class="disabled">1</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row sorter mb-3">
+                                        <div class="col-7">
+                                            <p class=""><strong>Total: </strong>7 days</p>
+                                            <p class="d-inline-block"><strong>Time: </strong>17.00 - 22.00</p>
+                                            <div class="">
+                                                <p class="d-inline-block mr-2"><strong>Location: </strong>ул.
+                                                    Сеноманская 16</p>
+                                                <a class="d-inline-block" href="#">map</a>
+                                            </div>
+
+                                            <a class="" data-toggle="collapse"
+                                               href="#viewHelp-1"
+                                               aria-expanded="false" aria-controls="viewHelp-1"
+                                               data-parent="" data-whatever="">
+                                                View full help-information
+                                            </a>
+
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="col text-center">
+                                                <button class="btn sorter">
+                                                    Rate Leo
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <div class="col">
+                                            <div class="card-block collapse" id="viewHelp-1">
+                                                <p>
+                                                    Eu mea rebum rationibus, sea feugiat definitiones et.
+                                                </p>
+                                                <p>Sed et
+                                                    labores debitis, utamur regione an has. No liber albucius nec, id
+                                                    pro
+                                                    laudem
+                                                    impedit. Facilisis scripserit consequuntur sit ne, vix recusabo
+                                                    erroribus
+                                                    et.</p>
+                                                <p>Ad oratio recteque instructior per, veri sadipscing cu cum. Mea an
+                                                    putant</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="row">
+            <footer class="col"></footer>
+        </div>
+    </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<script src="datepicker/js/bootstrap-datepicker.js"></script>
+<script src="custom.js"></script>
+</body>
+</html>
