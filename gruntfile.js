@@ -63,7 +63,16 @@ module.exports = function(grunt) {
      livereload: true,
      reload: true
     }
-   }
+   },
+    data: {
+      files: "data.json",
+      tasks: ["clean:html", "nunjucks", "prettify"],
+      options: {
+       spawn: false,
+       livereload: true,
+       reload: true
+      }
+    }
   },
   // Nunjucks task
   nunjucks: {
