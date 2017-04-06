@@ -7,13 +7,13 @@
     },
     {
       "card_image" : "http://placehold.it/450x150?text=IMAGE",
-      "card_title" : "Title for card 3",
+      "card_title" : "Title for card 2",
       "card_text" : "This is some card text, which may be a bit longer than the rest."
     }
   ],
   "navItems" : [
     {
-      "menu_item" : "Index12"
+      "menu_item" : "Index"
     }
   ]
 }
