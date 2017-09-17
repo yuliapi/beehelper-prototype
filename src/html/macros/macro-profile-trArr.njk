@@ -1,0 +1,20 @@
+{% macro add(heading, value, class=" ") %}
+    <th class="first-col">
+        <p><strong> {{ heading }}:</strong></p>
+        <button class="btn-link" type="button" data-toggle="modal" data-target="#editUserInfo">edit</button>
+    </th>
+    <td>
+        <div class="d-inline-block">
+            {% if class %}
+                {% for i in value %}
+                    <p class="{{ class }}">{{ i + ", " }}</p>
+                {% endfor %}
+            {% else %}
+                {% for each in value %}
+                    <p>{{ i }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </td>
+{% endmacro %}

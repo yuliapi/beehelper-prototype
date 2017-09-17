@@ -1,0 +1,231 @@
+{% import "macros/macro-taskCard-headerStatus.njk" as status %}
+{% import "macros/macro-taskCard-buttons.njk" as buttonSet %}
+{% import "macros/macro-taskCard-date.njk" as date %}
+{% import "macros/macro-taskCard-location.njk" as location %}
+{% import "macros/macro-giveEvaluation.njk" as evaluation %}
+{% import "macros/macro-btnModal.njk" as modalBtn %}
+{% import "macros/macro-modal-declineUpcoming.njk" as declineUpcoming %}
+{% import "macros/macro-modal-declineCurrent.njk" as declineCurrent %}
+
+{% macro add(content) %}
+    <div class="card-header">
+        <div class="row user-dash">
+            <div class="col-md-4  align-self-center">
+                {{ status.add(content.status) }}
+            </div>
+            <div class="col-md-3 align-self-center">
+                <h5 class="mb-0">{{ content.type | capitalize }}</h5>
+            </div>
+
+            <div class="col">
+
+                <p class="d-inline-block mb-0 float-right ml-2"><em>Created by: </em>
+                    <button class="btn" data-toggle="collapse"
+                            href="#viewExecutor"
+                            aria-expanded="false" aria-controls="viewExecutor"
+                            data-parent="" data-whatever="">
+                        <i class="fa fa-user-o ml-2" aria-hidden="true"></i>
+                        {{ content.createdBy }}
+                    </button>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-12 px-0">
+                {% if content.calendarNote === "true" %}
+                    <div class="alert alert-info py-0">
+                        <p class="mb-0">
+                            <small>For each task card dates when help is required have to be highlighted. In cases of
+                                <em>"current"</em> or <em>"completed"</em> tasks past(completed) dates have to be
+                                highlighted and fade
+                            </small>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="card-aside">
+                <div class="calendar-wrapper">
+                    <div class="calendar-header py-2">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <p class="m-0 d-inline-block">March 2017</p>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="calendar-body p-2">
+                        <div class="row weekdays ">
+                            <div class="col-xs-1"><p class="small">S</p></div>
+                            <div class="col-xs-1"><p class="small">M</p></div>
+                            <div class="col-xs-1"><p class="small">T</p></div>
+                            <div class="col-xs-1"><p class="small">W</p></div>
+                            <div class="col-xs-1"><p class="small">T</p></div>
+                            <div class="col-xs-1"><p class="small">F</p></div>
+                            <div class="col-xs-1"><p class="small">S</p></div>
+                        </div>
+                        <div class="row dates">
+                            <div class="col-xs-1"><p class="disabled">26</p></div>
+                            <div class="col-xs-1 selected"><p class="disabled">27</p></div>
+                            <div class="col-xs-1"><p class="disabled">28</p></div>
+                            <div class="col-xs-1"><p>1</p></div>
+                            <div class="col-xs-1"><p>2</p></div>
+                            <div class="col-xs-1"><p>3</p></div>
+                            <div class="col-xs-1"><p>4</p></div>
+                        </div>
+                        <div class="row dates">
+                            <div class="col-xs-1"><p>5</p></div>
+                            <div class="col-xs-1 selected"><p>6</p></div>
+                            <div class="col-xs-1"><p>7</p></div>
+                            <div class="col-xs-1"><p>8</p></div>
+                            <div class="col-xs-1"><p>9</p></div>
+                            <div class="col-xs-1 "><p>10</p></div>
+                            <div class="col-xs-1"><p>11</p></div>
+                        </div>
+                        <div class="row dates">
+                            <div class="col-xs-1 "><p>12</p></div>
+                            <div class="col-xs-1 selected"><p>13</p></div>
+                            <div class="col-xs-1 "><p>14</p></div>
+                            <div class="col-xs-1"><p>15</p></div>
+                            <div class="col-xs-1"><p>16</p></div>
+                            <div class="col-xs-1"><p>17</p></div>
+                            <div class="col-xs-1"><p>18</p></div>
+                        </div>
+                        <div class="row dates">
+                            <div class="col-xs-1"><p>19</p></div>
+                            <div class="col-xs-1 selected"><p>20</p></div>
+                            <div class="col-xs-1"><p>21</p></div>
+                            <div class="col-xs-1"><p>22</p></div>
+                            <div class="col-xs-1"><p>23</p></div>
+                            <div class="col-xs-1"><p>24</p></div>
+                            <div class="col-xs-1"><p>25</p></div>
+                        </div>
+                        <div class="row dates">
+                            <div class="col-xs-1"><p>26</p></div>
+                            <div class="col-xs-1 selected"><p>27</p></div>
+                            <div class="col-xs-1"><p>28</p></div>
+                            <div class="col-xs-1"><p>29</p></div>
+                            <div class="col-xs-1"><p>30</p></div>
+                            <div class="col-xs-1"><p>31</p></div>
+                            <div class="col-xs-1"><p class="disabled">1</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                {#********************Rating block*******************/#}
+                <div class="row">
+                    <div class="col-7">
+                        {% if content.status === "current" or content.status === "completed" and content.newRating === 'true' and content.returnAssessment === 'false' %}
+                            {{ evaluation.add(content) }}
+                        {% endif %}
+                        {% if content.status === "declined" %}
+                            <div>
+                                <div class="btn btn-secondary active"><i class="fa fa-close text-danger"
+                                                                         aria-hidden="true"></i>
+                                </div>
+                                <p class="d-inline-block">You have declined this proposal
+                                    <button type="button" class="btn btn-link p-0">Details</button>
+                                </p>
+                                <div class="alert-info">
+                                    <p><em>or one from following:</em></p>
+                                    <p class="mb-0">Declined by other user
+                                        <button type="button" class="btn btn-link p-0">Details</button>
+                                    </p>
+                                    <p class="mb-0">You have cancelled upcoming job
+                                        <button type="button" class="btn btn-link p-0">Details</button>
+                                    </p>
+                                    <p class="mb-0">You have cancelled unfinished task
+                                        <button type="button" class="btn btn-link p-0">Details</button>
+                                    </p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-5">
+                        {% if content.status === "current" or content.status === "completed" and content.newRating === 'true' and content.returnAssessment === 'false' %}
+                            {{ modalBtn.new("myHelp-1", "Rate "+ content.createdBy | capitalize, "btn-warning" ) }}
+
+                        {% endif %}
+                    </div>
+                </div>
+                {#****************************************************#}
+                <div class="row">
+                    {#*****************Help information****************************#}
+                    <div class="col-7">
+                        {{ date.add(content) }}
+                    </div>
+                    {#*************************************************************#}
+                    <div class="col-5 w-100">
+                        {% if content.status !== "completed" and content.status !== "declined" %}
+                            {% if content.confirmedByEmployer === "true" %}
+                                {% if content.confirmedByUser === "false" %}
+                                    <div class="alert alert-info">
+                                        <small>Other user made a request and find you in a list of results among
+                                            possible
+                                            executors. He(she) confirmed you and send to you this offer.
+                                        </small>
+                                    </div>
+
+
+                                {% endif %}
+                                <div>
+                                    <div class="btn btn-secondary active"><i class="fa fa-check" aria-hidden="true"></i>
+                                    </div>
+                                    <p class="d-inline-block">{{ content.createdBy }} confirmed you</p>
+                                </div>
+                                {% elif content.confirmedByUser === "false" and content.confirmedByEmployer === "false" %}
+                                <div class="alert alert-info">
+                                    <small>You find other user help-request and started discussion. You can either
+                                        confirm or decline to change this entry status.
+                                    </small>
+                                </div>
+                            {% endif %}
+                            <div class="w-100"></div>
+
+                            {% if content.confirmedByUser !== "true" %}
+                                {{ modalBtn.new("#confirmTask", "Confirm task", "btn-warning") }}
+                                {{ modalBtn.new("#simpleDecline", "Decline task", "btn-warning") }}
+                            {% else %}
+                                <div>
+                                    <div class="btn btn-secondary active"><i class="fa fa-check" aria-hidden="true"></i>
+                                    </div>
+                                    <p class="d-inline-block">You confirmed this task</p>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        {% if content.status === "upcoming" %}
+                            {{ modalBtn.new("#declineUpcoming", "Decline task", "btn-warning") }}
+                            {{ declineUpcoming.show(content.createdBy) }}
+                        {% endif %}
+                        {% if content.status === "current" %}
+                            {{ modalBtn.new("#declineCurrent", "Decline task", "btn-warning") }}
+                            {{ declineCurrent.show(content.createdBy, content.returnAssessment) }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {{ location.add(content) }}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var dates = [{% for date in content.dates %}
+                "{{ date }}",
+                {% endfor %}]
+            dates = dates.map(function (d) {
+                return new Date(d);
+            });
+
+            console.log(dates);
+            $('.datepicker-display').datepicker("setDates", dates);
+        };
+
+    </script>
+{% endmacro %}

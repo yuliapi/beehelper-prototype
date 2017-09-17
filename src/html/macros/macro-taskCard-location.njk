@@ -1,0 +1,17 @@
+{% macro add(data) %}
+    {% if data.type === 'babysitting'%}
+        <div class="">
+            <p class="d-inline-block mr-2"><strong>Location: </strong>{{ data.location }}</p>
+            <a class="d-inline-block" href="#">map</a>
+        </div>
+
+        {% endif %}
+    {% if  data.type === 'transportation'%}
+        <div class="">
+            <p class="">{{ data.locationFrom }} ({{ data.timeFrom }}) <i
+                        class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                {{ data.locationTo }} ({{ data.timeTo }})<a class="ml-3" href="#">map</a>
+            </p>
+        </div>
+        {% endif %}
+{% endmacro %}

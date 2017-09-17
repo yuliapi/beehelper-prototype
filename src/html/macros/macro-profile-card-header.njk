@@ -1,0 +1,29 @@
+{% macro header(user) %}
+    <div class="card-header row mx-0">
+        <div class="col-sm-4">
+            <h4> {{ user.name }} </h4>
+        </div>
+
+        {% if user.own  %}
+            <div class="col-sm-8">
+                <a href="edit-my-profile.html" class="d-block text-right">Edit profile and settings</a>
+            </div>
+        {% else %}
+            <div class="col-sm-8 ">
+                <div class="float-left">
+                    <button class="btn-link" data-toggle="modal" data-target="#send-message"><i
+                                class="fa fa-envelope mr-1" aria-hidden="true"></i>Send private message
+                    </button>
+                </div>
+
+                <div class="float-right">
+                    <button class=" btn-link" data-toggle="modal" data-target="#send-myHelp"><i
+                                class="fa fa-file-text-o mr-1" aria-hidden="true"></i>Send help description
+                    </button>
+                </div>
+
+            </div>
+        {% endif %}
+    </div>
+
+{% endmacro %}

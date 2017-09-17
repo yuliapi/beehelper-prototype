@@ -1,0 +1,12 @@
+{% macro add(heading, value, target) %}
+    <tr>
+        <th class="first-col">
+            <p><strong>{{ heading }} </strong></p>
+        </th>
+        <td>
+            <p class="d-inline-block">{{ value }}</p>
+            <button class="btn-link" type="button" data-toggle="modal" data-target="#editUserInfo">edit</button>
+        </td>
+
+    </tr>
+{% endmacro %}

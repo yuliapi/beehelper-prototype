@@ -1,0 +1,6 @@
+{% macro checkbox(text, checked) %}
+    <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" value="" {{ checked }}>
+        {{ text | capitalize}}
+    </label>
+{% endmacro %}

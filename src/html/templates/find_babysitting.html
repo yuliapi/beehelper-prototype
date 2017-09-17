@@ -1,0 +1,65 @@
+{% extends "templates/find-form.html" %}
+
+{% block main %}
+{{ super() }}
+
+{% import "macros/macro-address-input.njk" as address %}
+{% import "macros/macro-clockpicker.njk" as clockpicker %}
+{% import "macros/macro-checkboxDays.njk" as checkbox %}
+{% import "macros/macro-action-btn-link.njk" as searchButton %}
+
+<form>
+    <h2>Find help with babysitting</h2>
+    <fieldset class="date-field">
+        <legend>Date</legend>
+        {% include "components/form-Dates.njk" %}
+    </fieldset>
+    <fieldset>
+        <legend>Time and location</legend>
+        <div class="row">
+            <div class="col-12 col-md-6 ">
+                {{ address.address( bbAddress ) }}
+                <div class="row">
+                    {{ clockpicker.clockpicker( bbClock) }}
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="embed-responsive embed-responsive-16by9" id="mapHolder"></div>
+            </div>
+        </div>
+
+    </fieldset>
+    <fieldset>
+        <legend>Additional information</legend>
+        <div class="row">
+            <div class="col-6">
+                <div id="in-outdoor" data-toggle="buttons">
+                    {{ checkbox.checkbox("indoor", "option-place", "indoor") }}
+                    {{ checkbox.checkbox("outdoor", "option-place", "outdoor") }}
+                </div>
+                {% include "components/price-range.njk" %}
+                <div class="row">
+                    <div class='form-group col-sm-6'>
+                        <label for="need-children" class="">Number and age of kids</label>
+                        <div class="input-group spinner">
+                            <input class="form-control" value="1" type="number"
+                                   id="need-children">
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6" id="need-age">
+                        <em class="text-muted">Fields to set age of children. Appear after setting number of kids</em>
+                    </div>
+                </div>
+            </div>
+        {% include "components/add-info.njk" %}
+        </div>
+    </fieldset>
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            {{ searchButton.button("Find", "results.html") }}
+        </div>
+    </div>
+</form>
+{% endblock %}
+

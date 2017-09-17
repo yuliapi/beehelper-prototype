@@ -1,0 +1,13 @@
+{% macro menuButton (element) %}
+    <a class="btn btn-primary  btn-border btn-custom btn-help mx-3 btnFind " href="{{ element.link }}">
+        <div class="d-flex h-100 w-100">
+            <div class="align-self-center m-auto">
+                {% if element.icon %}
+                    <i class="fa {{ element.icon }} fa-2x d-block" aria-hidden="true"></i>
+                {% endif %}
+                <span class="">{{ element.text }}</span>
+            </div>
+        </div>
+    </a>
+
+{% endmacro %}

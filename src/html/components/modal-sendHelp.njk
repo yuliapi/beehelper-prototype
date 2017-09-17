@@ -1,0 +1,69 @@
+<div>
+    <div class="modal fade" id="send-myHelp" tabindex="-1" role="dialog" aria-labelledby="send-myHelpLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="send-myHelpLabel">Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p>To: UserName</p>
+                        <div class="form-group">
+                        <textarea class="form-control" id="message-myHelp"
+                                  placeholder="Help description will be created from search request and will be added here automatically"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label my-label">Say more (optional)</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p class="small">After sending message your help request will be saved automatically.</p>
+                    <button type="button" class="btn btn-primary sendBtn">Send message</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard and close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="success-message hidden-xs-up">
+        <i class="fa fa-check-circle fa-3x" aria-hidden="true"></i>
+        <p>Your message have been sent. You can view it <a href="./user-pending.html">here</a></p>
+        <p>Your help request was saved. You can view and edit it <a href="./user-help-me.html">here</a></p>
+    </div>
+    <div class="modal fade" id="send-message" tabindex="-1" role="dialog" aria-labelledby="send-newMessage"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="send-newMessage">Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p>To: UserName</p>
+                        <div class="form-group">
+                            <label for="message-text1" class="form-control-label my-label">Message</label>
+                            <textarea class="form-control" id="message-text1" placeholder="Print here"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="sendMessage(this)">Send message</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard and close</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="success-privateMessage hidden-xs-up">
+        <i class="fa fa-check-circle fa-3x" aria-hidden="true"></i>
+        <p>Your message have been sent. You can view it <a href="./user-pending.html">here</a></p>
+    </div>
+</div>

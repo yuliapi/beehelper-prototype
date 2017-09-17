@@ -1,0 +1,581 @@
+
+.bg-primary {
+    background-color: #474B4F !important;
+}
+
+.bg-inverse {
+    background-color: #ffd600 !important;
+}
+
+.text-primary {
+    color: #ffd600 !important;
+}
+
+.text-inverse {
+    color: #474B4F !important;
+}
+
+.btn-primary {
+    background-color: #474B4F !important;
+    color: #ffd600 !important;
+    border-color: #474B4F !important;
+}
+.btn-secondary {
+    background-color: initial;
+    border: none;
+}
+.btn-secondary.active {
+    background-color: rgba(147, 191, 0, 0.35);
+    border-color: rgba(145, 189, 0, 0.35);
+}
+a.text-primary:hover,
+.btn-primary:hover {
+    color: #fcfcfc !important;
+}
+
+.navbar-brand.text-primary:hover {
+    color: #ffd600 !important;
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.btn:focus,
+.btn:active:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.navbar-brand {
+    font-family: 'Amatic SC', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: initial;
+}
+
+.navbar-toggler,
+.navbar-toggler:focus {
+    outline-color: #ffd600;
+}
+
+.navbar-toggler-icon {
+    background-color: #474B4F;
+}
+
+span.navbar-toggler-icon {
+
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#ffd600' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/***************************************************************************************/
+html,
+body,
+main,
+aside {
+    height: 100%;
+}
+
+body {
+    -webkit-overflow-scrolling: touch;
+}
+
+/*******************************Header navbar*******************************************/
+header {
+    height: 4.5rem;
+}
+
+header nav {
+    height: 4.5rem;
+}
+
+.name-holder img {
+    height: 50px;
+    width: 50px;
+}
+
+header .btn-primary {
+    line-height: 1.5;
+}
+
+header .navbar-toggler-right {
+    position: fixed;
+    top: 1rem;
+
+}
+
+header .navbar-collapse.collapsing,
+header .navbar-collapse.collapse.show {
+    visibility: visible;
+    position: fixed;
+    top: 4rem;
+    right: 15px;
+    width: 200px;
+    min-width: 200px;
+    background-color: #474B4F
+}
+
+legend {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ffd600;
+}
+
+/*******************************Main**************************************************/
+main {
+    margin-top: 4.5rem;
+    /*overflow-y: hidden;*/
+}
+
+/******************************Aside navbar******************************************/
+aside {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    /*overflow-y: hidden;*/
+    padding-left: 2px;
+    max-width: 101px;
+    min-width: 101px;
+    height: 100vh;
+}
+
+aside.mobile {
+    max-width: 70px;
+    min-width: 70px;
+}
+
+.sidebar-nav {
+    max-width: 104px;
+    min-width: 104px;
+}
+
+.sidebar-nav > ul > .nav-item {
+    width: 100%;
+    height: 104px;
+}
+
+.sidebar > .btn {
+    display: inline-block;
+    height: 104px;
+    width: 100px;
+}
+
+.sidebar.mobile > .btn {
+    height: 70px;
+    width: 70px;
+    font-size: .7rem;
+
+}
+
+.btn-aside {
+    background: transparent;
+    color: #ffd600;
+    border: 2px solid #474B4F;
+
+}
+
+.btn-aside:hover {
+    color: #ffd600;
+    border: 2px ridge #ffd600;
+}
+
+.active .btn-aside {
+    background-color: #ffd600;
+    color: #474B4f;
+    border-color: #ffd600;
+}
+
+.active .btn-aside:hover {
+    color: #474B4f;
+    border: 2px ridge #474B4f;
+}
+
+/*************************Page content******************************************************/
+.page-content {
+    /*background-color: #00aa88;*/
+    position: absolute;
+    top: 0;
+
+    left: 100px;
+    width: calc(100% - 100px);
+
+}
+
+.page-content.mobile {
+    left: 70px;
+    width: calc(100% - 70px);
+}
+
+.page-content.portrait {
+    width: 100%;
+    left: 0;
+    padding-bottom: 80px;
+}
+
+/*.page-content.mobile {*/
+/*left: 70px;*/
+/*width: calc(100% - 70px);*/
+
+/*}*/
+
+@media (max-width: 575px) {
+    .page-content.iphone5 {
+        left: 70px;
+        width: calc(100% - 70px);
+    }
+
+    .page-content {
+        left: 0;
+        width: 100%;
+    }
+
+}
+
+/*******************************Todo card calendar*************************************************/
+/*calendar*/
+.calendar-wrapper {
+    border: 0.1em solid #ccc; /* wrap the calendar inside a box */
+    width: 11em; /* define a width for the box */
+
+    box-shadow: 0.1em 0.2em 0.8em #ccc; /* box shadow for better view */
+}
+
+.calendar-header {
+    background-color: #3f51b5; /* give the header a background color */
+    color: white; /* give the header a text color */
+    text-align: center; /* center the text inside the header */
+
+}
+
+.calendar-body .col-xs-1 {
+    width: 1.5em; /* give each column a fixed width */
+    text-align: center; /* align text in the center */
+}
+
+.dates, .weekdays {
+    padding: 0.2em 0.5em; /* giving dates some space  */
+}
+
+.calendar-body p {
+    font-size: 12px;
+    margin: 0.25rem 0;
+}
+
+.calendar-body p.disabled {
+    color: #4b5257;
+}
+
+.calendar-body div.selected {
+    background-color: rgba(255, 214, 0, 0.39);
+}
+/*************************Footer*******************************************************************/
+footer {
+    height: 70px;
+}
+
+footer .sidebar > .btn {
+    height: 80px;
+    width: 80px;
+    padding: .5rem 0.25rem;
+}
+
+/*footer ul.nav {*/
+/*width: 320px;*/
+
+/*}*/
+footer .sidebar > .btn {
+    height: 80px;
+    width: 80px;
+
+}
+
+@media (min-width: 768px) {
+    aside .nav {
+        position: fixed;
+        top: 4.5rem;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+/*************************************************************************/
+.btn-border {
+    border-radius: 25px 0 25px 25px;
+}
+
+.btn-primary-custom {
+    width: 200px;
+    font-size: 2rem;
+}
+
+.btn-help {
+    width: 200px;
+    height: 200px;
+    font-family: 'Neucha', cursive;
+    letter-spacing: 1.5px;
+    font-size: 38px;
+    word-spacing: 5px;
+}
+
+/*.btn-find {*/
+/*width: 10rem;*/
+/*height: 10rem;*/
+/*font-family: 'Neucha', cursive;*/
+/*font-size: 38px;*/
+/*letter-spacing: 1.5px;*/
+/*word-spacing: 5px;*/
+
+/*}*/
+/*.btn-find.mobile {*/
+/*width: 10rem;*/
+/*height: 10rem;*/
+/*font-family: 'Neucha', cursive;*/
+/*font-size: 2rem;*/
+/*letter-spacing: 1.5px;*/
+/*word-spacing: 5px;*/
+/*margin: 1rem;*/
+/*}*/
+.label-btn {
+    height: 50px;
+    width: 50px;
+}
+
+.btn.label-btn:hover {
+    border: 2px ridge #ffd600;
+}
+
+.btn.label-btn:focus,
+.btn.label-btn.focus,
+.btn.label-btn:active:focus,
+.btn.label-btn.active:focus {
+    box-shadow: 0 0 0 2px #ffd600;
+}
+
+.label-btn > .fa-check {
+    color: #474B4F;
+}
+
+#in-outdoor > .label-btn, #payment > .label-btn, #canHelpType > .label-btn {
+    width: initial;
+}
+
+.mark-checked {
+    color: #ffd600 !important;
+}
+
+.my-label {
+    height: 1rem;
+    color: #177611;
+    font-size: 0.75rem;
+
+}
+
+.date-field {
+    height: 305px;
+}
+
+.spinner {
+    width: 100px;
+}
+
+/*************************result card****************************************/
+.user-dash {
+    background-color: rgba(255, 214, 0, 0.39);
+}
+
+.executor {
+
+    background-color: rgba(147, 191, 0, 0.35);
+}
+
+.user-dash .btn,
+.executor .btn {
+    color: #474B4F;
+    background-color: inherit;
+}
+
+.executor .btn {
+    cursor: pointer;
+}
+
+.executor .btn:hover,
+.user-dash .btn:hover {
+    color: #474B4F;
+    background-color: rgba(136, 175, 47, 0.63);
+}
+
+.card-aside {
+    width: 11em;
+    /*max-width: 225px;*/
+}
+
+.card-aside ul li {
+    background-color: rgba(147, 191, 0, 0.06);
+    border: 1px solid rgba(147, 191, 0, 0.35);
+    margin: 1px 0;
+}
+
+.card-aside ul li > a,
+.card-aside ul li > a:not([href]),
+.card-aside ul li > a:not([href]):not([tabindex]):hover {
+    color: #474B4F;
+    line-height: 37px;
+}
+
+.card-aside ul li > a:hover,
+.card-aside ul li > a:not([href]):not([tabindex]):hover {
+    background-color: rgba(255, 214, 0, 0.34);
+}
+
+.card-aside ul li > a.active,
+.card-aside ul li > a:not([href]):not([tabindex]).active,
+.card-aside ul li > a:not([href]):not([tabindex]).active:hover {
+    background-color: rgba(147, 191, 0, 0.35);
+}
+
+.card.card-main {
+    border: 1px solid rgba(147, 191, 0, 0.35);
+}
+
+.card-header.other-user {
+    background-color: rgba(147, 191, 0, 0.35);
+}
+
+.own-message .card-header {
+
+    background-color: rgba(121, 128, 135, 0.16)
+}
+
+.card-header .btn {
+
+    color: #474B4F;
+    cursor: pointer;
+}
+
+.card-header .btn:hover {
+    background-color: rgba(147, 191, 0, 0.44);
+}
+
+.messages {
+    height: 400px;
+    overflow-y: scroll;
+}
+/*******************popover, popover-recommendations***********************************/
+
+.userpic-info {
+    height: 32px;
+       width: 32px;
+    -webkit-transition: all 0.7s; /* For Safari 3.1 to 6.0 */
+    transition: all 0.7s ease;
+
+}
+
+.userpic-info img {
+    padding: 5px;
+
+    transition: transform 1s ease;
+
+}
+
+.userpic-info.inlarge {
+    height: 200px;
+    width: 300px;
+    background-color: rgb(123, 122, 130);
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    z-index: 1000;
+    padding: 10px;
+
+}
+
+.userpic-info.inlarge > .user {
+    width: 75px;
+    height: 75px;
+    border: 1px solid red;
+}
+
+.userpic-info.inlarge > .popover-username {
+    width: 200px;
+    border: 1px solid black;
+}
+
+.userpic-info.inlarge.no-comments {
+    height: 100px;
+}
+
+.userpic-info img.userpic-inlarge {
+    transform: scale(2) translate(10px, 10px);
+
+}
+
+.userpic-info .comment {
+    color: #fcfcfc;
+}
+
+.userpic-wrap {
+    position: relative;
+    height: 37px;
+    width: 37px;
+}
+
+.popover-content table td {
+    border: none;
+}
+
+.rating-popover {
+    width: 250px;
+}
+
+.rating-popover a {
+    line-height: 1rem;
+}
+.profile-card-fixed {
+    width: 200px;
+}
+.profile-card-fixed .photo-holder {
+    width: 150px;
+    font-size: 14px;
+}
+.profile-card-fluid {
+    width:calc(100% - 200px);
+}
+
+ul.profile-social-icons .disabled {
+    color: rgba(128, 128, 128, 0.66)
+}
+.donut {
+    width: 18px;
+    height: 18px;
+}
+.donut.color {
+    fill: deeppink;
+}
+#settings-nav {
+    width: 140px;
+    font-size: 18px;
+}
+#settings-nav ul {
+    position: sticky;
+    top: 6rem;
+}
+.profile .first-col {
+    width: 150px;
+}
+.table.profile  td {
+    vertical-align: middle;
+}
+/*************************************************************/
+.bordered-black {
+    border: 1px solid black
+}
+
+.bordered-red {
+    border: 1px solid red;
+}
+
+
+.borderless td, .borderless th {
+    border: none;
+}

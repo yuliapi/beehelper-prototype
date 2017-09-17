@@ -1,0 +1,176 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.js"></script>
+<script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="http://localhost:35729/livereload.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src="../jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnidssOZD0WwpPZpENq0-IlAMc-0CRjwc&libraries=places&language=uk&region=UA"></script>
+<script type="text/javascript" src="../src/scripts/screenMode.js"></script>
+<script type="text/javascript" src="../src/scripts/bootstrap-clockpicker.js"></script>
+<script type="text/javascript" src="../src/scripts/custom.js"></script>
+
+
+<script>
+    var active = "{{ active_page }}";
+
+    $('.btn-aside').each(function () {
+
+        if ($(this).attr('href') === (active + '.html')) {
+            $(this).parent().addClass('active');
+        }
+    })
+</script>
+
+
+{#<script>#}
+    {#var is_keyboard = false;#}
+    {#var initial_screen_size = window.innerHeight;#}
+
+    {#/* Android */#}
+    {#window.addEventListener("resize", function () {#}
+        {#is_keyboard = (window.innerHeight < initial_screen_size);#}
+        {#updateViews();#}
+    {#}, false);#}
+
+    {#/* iOS */#}
+    {#$("input").bind("focus blur", function () {#}
+        {#$(window).scrollTop(10);#}
+        {#is_keyboard = $(window).scrollTop() > 0;#}
+        {#$(window).scrollTop(0);#}
+        {#updateViews();#}
+    {#});#}
+    {#function updateViews() {#}
+        {#if (is_keyboard) {#}
+            {#$("footer").addClass("d-none");#}
+        {#}#}
+        {#else {#}
+            {#$("footer").removeClass("d-none");#}
+        {#}#}
+    {#}#}
+    {#$(document).ready(function () {#}
+
+        {#$("#price-range").slider({#}
+            {#range: true,#}
+            {#min: 0,#}
+            {#max: 150,#}
+            {#values: [15, 45],#}
+            {#slide: function (event, ui) {#}
+                {#$("#amount").val(ui.values[0] + " uah/day" + " - " + ui.values[1] + " uah/day");#}
+            {#}#}
+        {#});#}
+
+        {#$("#amount").val($("#price-range").slider("values", 0) + " uah/day" +#}
+            {#" - " + $("#price-range").slider("values", 1) + " uah/day");#}
+        {#initMap();#}
+        {#var optionsDataRange = {#}
+            {#orientation: 'right',#}
+            {#container: '#range',#}
+            {#weekStart: 1,#}
+            {#forceParse: false,#}
+            {#clearBtn: true#}
+        {#}#}
+        {#$('.input-daterange').datepicker(optionsDataRange);#}
+    {#});#}
+    {#//    $(".ui-slider-handle").draggable();#}
+{#</script>#}
+{#<script>#}
+
+    {#var geocoder;#}
+    {#var map;#}
+    {#var marker;#}
+    {#var markerA, markerB;#}
+    {#//var newAddress is for changing address in input field when marker dragged#}
+    {#var newAddress;#}
+    {#var defaultBounds;#}
+
+    {#function initMap() {#}
+        {#geocoder = new google.maps.Geocoder();#}
+        {#var mapDiv = document.getElementById("mapHolder");#}
+        {#map = new google.maps.Map(mapDiv, {#}
+            {#center: {lat: 50.4501, lng: 30.4135},#}
+            {#// center: {lat: 50.4501, lng: 30.5234},#}
+            {#zoom: 12#}
+        {#});#}
+        {#defaultBounds = new google.maps.LatLngBounds(#}
+            {#new google.maps.LatLng(50.278160, 30.253885),#}
+            {#new google.maps.LatLng(50.651240, 30.827552));#}
+        {#//next three lines of code are added to prevent map from being loaded partially on top left corner#}
+        {#// http://stackoverflow.com/questions/17059816/google-maps-v3-load-partially-on-top-left-corner-resize-event-does-not-work?noredirect=1&lq=1#}
+        {#google.maps.event.addListenerOnce(map, 'idle', function () {#}
+            {#google.maps.event.trigger(map, 'resize');#}
+        {#});#}
+    {#}#}
+
+
+    {#function fieldAutocomplete(id, mark) {#}
+        {#var options = {#}
+            {#bounds: defaultBounds#}
+        {#};#}
+        {#var input = document.getElementById(id);#}
+        {#var searchbox = new google.maps.places.Autocomplete(input, options);#}
+        {#google.maps.event.addDomListener(input, 'keydown', function (e) {#}
+            {#if (e.keyCode == 13) {#}
+                {#e.preventDefault();#}
+            {#}#}
+        {#});#}
+        {#google.maps.event.addListener(searchbox, 'place_changed', function () {#}
+
+            {#codeAddress(id, mark);#}
+        {#});#}
+    {#}#}
+
+    {#function codeAddress(id, mark) {#}
+        {#var address = $('#' + id).val();#}
+        {#geocoder.geocode({'address': address}, function (results, status) {#}
+            {#if (status === 'OK') {#}
+                {#map.setCenter(results[0].geometry.location);#}
+                {#mark.setPosition(results[0].geometry.location);#}
+                {#helpData['Lat'] = results[0].geometry.location.lat();#}
+                {#helpData['Lng'] = results[0].geometry.location.lng();#}
+            {#} else {#}
+                {#console.log('Geocode was not successful for the following reason: ' + status);#}
+            {#}#}
+        {#});#}
+    {#}#}
+
+    {#function getReverseGeocodingData(lat, lng, id) {#}
+        {#var latlng = new google.maps.LatLng(lat, lng);#}
+        {#var geocoder = new google.maps.Geocoder();#}
+        {#geocoder.geocode({'latLng': latlng}, function (results, status) {#}
+            {#if (status !== google.maps.GeocoderStatus.OK) {#}
+                {#console.log(alert(status));#}
+            {#}#}
+            {#if (status == google.maps.GeocoderStatus.OK) {#}
+
+                {#newAddress = (results[0].formatted_address);#}
+                {#changeAddress('#' + id, newAddress);#}
+            {#}#}
+        {#});#}
+    {#}#}
+
+    {#function changeAddress(input, text) {#}
+        {#$(input).val(text);#}
+    {#}#}
+
+    {#function add1Marker(div) {#}
+        {#marker = new google.maps.Marker({#}
+            {#map: map,#}
+            {#position: {lat: 50.4501, lng: 30.5234},#}
+            {#title: "Hello World!",#}
+            {#icon: '/static/mh_app/img/map-marker.png',#}
+            {#draggable: true#}
+        {#});#}
+        {#google.maps.event.addListener(marker, 'dragend', function () {#}
+            {#var newLat = this.getPosition().lat();#}
+            {#var newLng = this.getPosition().lng();#}
+            {#helpData['Lat'] = newLat;#}
+            {#helpData['Lng'] = newLng;#}
+            {#getReverseGeocodingData(newLat, newLng, div);#}
+        {#});#}
+    {#}#}
+    {#// /*************************************/#}
+
+{#</script>#}

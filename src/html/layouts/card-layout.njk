@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row user-dash">
+            <div class="col-md-4  align-self-center">
+                {% block cardHeader1 %}
+
+                {% endblock %}
+            </div>
+            <div class="col-md-4 align-self-center">
+                {% block cardHeader2 %}
+
+                {% endblock %}
+            </div>
+            <div class="col-md-4 text-right align-self-center">
+                {% block cardHeader3 %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-12 px-0">
+                {% block cardBodyInfo %}
+
+                {% endblock %}
+            </div>
+            <div class="card-aside">
+                {% block cardBodyAside %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+{% import "macros/macro-star.njk" as star %}
+
+{% macro content(entry) %}
+    <div class="card p-2 mt-2">
+        <div class="row">
+            <div class="col-2">
+                <a href="">{{ entry.name }}</a>
+                <img src="http://placehold.it/40x40"
+                     class="d-block">
+                {{ star.add(entry.score) }}
+
+            </div>
+            <div class="col-10" style="border-left: .25rem solid #eceeef;">
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <p><em>Date: {{ entry.date }}</em></p>
+                    </div>
+                    <div class="col-12">
+                        <p class=""> {{ entry.text }} </p>
+                    </div>
+
+                    <div class="col-12">
+                        <p class="float-left"><em>{{ entry.task }}</em></p>
+                        <p class="float-right"><em>Total {{ entry.total }} tasks</em></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endmacro %}

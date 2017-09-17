@@ -1,0 +1,14 @@
+{% extends "templates/other-user-profile.html" %}
+
+{% block main %}
+{{ super() }}
+<div class="row">
+    <div class="col-11 mx-auto">
+        <div class="card">
+            {{ cardheader.header(users.user2) }}
+            {{ cardbody.content(users.user2) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

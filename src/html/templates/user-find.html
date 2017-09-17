@@ -1,0 +1,28 @@
+{% extends "layouts/layout.njk" %}
+{% import "macros/macro-btn-selectSearchType.njk" as buttonSearch %}
+{% import "macros/macro-btn-selectHelpKind.njk" as buttonKind %}
+
+{% set base_path = "../" %}
+{% set page_title = "BeeHelper" %}
+{% set page_description = "prototype" %}
+{% set active_page = "find" %}
+
+
+{% block main %}
+{{ super() }}
+<div class="btn-holder text-center">
+    {{ buttonSearch.menuButton( btnHelpKind ) }}
+</div>
+<div class="collapse" id="needHelpForm">
+    <div class="btn-holder text-center">
+        {% for element in btnNeedType %}
+        {{ buttonKind.menuButton( element) }}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block page_script %}
+<script>
+    makeActive('aside-find');
+</script>
+{% endblock %}

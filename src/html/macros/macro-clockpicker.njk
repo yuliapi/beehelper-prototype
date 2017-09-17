@@ -1,0 +1,17 @@
+{% macro clockpicker(data) %}
+    {% for element in data %}
+        <div class="col-12 col-sm-6">
+            <div class="form-group">
+                <label for="{{ element.id }}" class="my-label"></label>
+                <div class="input-group clockpicker">
+                    <input type="text" class="form-control time " id="{{ element.id }}"
+                           name="{{ element.name }}" value="" placeholder="{{ element.placeholder }}">
+                    <span class="input-group-addon">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+
+                                            </span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}

@@ -1,0 +1,50 @@
+{% macro add(data) %}
+    <table class="table table-sm borderless">
+        <thead>
+        <tr>
+            {% if data.status !== "completed" and data.status !== "declined" %}
+            {% if data.status ==="current" %}
+                <th class="w-50">Next date</th>
+            {% else %}
+                <th class="w-50">Start date</th>
+            {% endif %}
+
+            <th class="w-50">Finish date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="py-0">XX-Month-YY</td>
+            <td class="py-0">XX-Month-YY</td>
+        </tr>
+        </tbody>
+        {% endif %}
+    </table>
+
+    {% if data.status ==="current" %}
+        <table class="table table-sm borderless">
+            <thead>
+            <tr>
+                <th class="w-50">Days left</th>
+                <th class="w-50">Days completed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="py-0">Num</td>
+                <td class="py-0">Num</td>
+            </tr>
+            </tbody>
+        </table>
+
+    {% else %}
+        <p class=""><strong>Total: </strong> N days</p>
+    {% endif %}
+
+
+
+
+    {% if  data.type === 'babysitting' %}
+        <p class="d-inline-block"><strong>Time: </strong>{{ data.time }}</p>
+    {% endif %}
+{% endmacro %}

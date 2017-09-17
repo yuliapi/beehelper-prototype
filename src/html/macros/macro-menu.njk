@@ -1,0 +1,10 @@
+{% macro menu(items) %}
+    {% for item in items %}
+        <li class="nav-item sidebar">
+            <a href="{{ item.menu_item | lower | replace(" ", "") }}.html" class="btn btn-aside">
+                <i class = "fa {{ item.menu_icon_class }}"></i><br/>
+                {{ item.menu_item }}
+            </a>
+        </li>
+    {% endfor %}
+{% endmacro %}

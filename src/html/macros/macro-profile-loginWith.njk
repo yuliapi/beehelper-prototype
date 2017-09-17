@@ -1,0 +1,25 @@
+{% macro add(entry) %}
+    {% if entry.login %}
+        {% set checked = "checked" %}
+    {% else %}
+        {% set checked = " " %}
+    {% endif %}
+    <div class="form-check form-check-inline">
+    <label class="form-check-label ">
+    <input class="form-check-input active"
+                   type="checkbox" {{ checked }} id=""
+                   value="option1"><i
+                    class="fa {{ entry.icon }}"
+                    aria-hidden="true"></i>
+            <small>{{ entry.text }}</small>
+        </label>
+    </div>
+    {% if entry.checked %}
+        <div>
+            <img class="d-inline-block"
+                 src="http://placehold.it/20x20">
+            <a class="d-inline-block" href="#">{{ entry.name }}</a><a
+                    class="d-inline-block"></a>
+        </div>
+    {% endif %}
+{% endmacro %}

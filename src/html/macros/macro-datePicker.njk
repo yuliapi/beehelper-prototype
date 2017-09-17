@@ -1,0 +1,10 @@
+{% macro datePicker(id, name, placeholder) %}
+    <div class="form-group">
+        <label class="my-label " for="{{ id }}"></label>
+        <input type="text" class="" width="" id="{{ id }}"
+               name="{{ name }}"
+               placeholder="{{ placeholder }}">
+        <div class="range"></div>
+    </div>
+
+{% endmacro %}

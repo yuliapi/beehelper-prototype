@@ -1,0 +1,186 @@
+{% import "macros/macro-listitem.njk" as list %}
+{% import "macros/macro-review-block.njk" as review %}
+{% import "macros/macro-rating.njk" as rating %}
+{% import "macros/macro-pageAnchor.njk" as anchor %}
+
+{% macro content(user) %}
+
+    <div class="container-fluid mx-0">
+        <div class="card-block" style="border-bottom: 1px solid black">
+            <div class="row">
+
+                <div class="profile-card-fluid">
+                    <h5 class="card-title">General information:</h5>
+                    <p>{{ profileMenu[0] }} </p>
+                    {{ anchor.add(profileMenu[0]) }}
+                    <div class="row">
+                        <div class="col">
+                            <h6>Location:</h6>
+                            <p>{{ user.location }}</p>
+                        </div>
+                        <div class="col">
+                            <h6>User since: </h6>
+                            <p>{{ user.since }}</p>
+                        </div>
+                        <div class="col">
+                            <h6>Find me in:</h6>
+                            <ul class="list-inline profile-social-icons my-auto">
+                                <li class="list-inline-item"><a href="#" class="disabled"><i
+                                                class="fa fa-facebook-square fa-2x"
+                                                aria-hidden="true"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="disabled"><i
+                                                class="fa fa-google-plus-square  fa-2x"
+                                                aria-hidden="true"></i></a></li>
+                                <li class="list-inline-item"><a href="#" class="disabled"><i
+                                                class="fa fa-vk  fa-2x" aria-hidden="true"></i></a>
+                                </li>
+                                <li class="list-inline-item"><a href="#" class="disabled">
+                                        <i class="fa fa-odnoklassniki-square  fa-2x"
+                                           aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-5">
+                            <h6>About me:</h6>
+                            <p>Soufflé pie chupa chups sweet roll I love. Cookie pastry
+                                fruitcake I love gingerbread croissant gummies. Toffee sweet
+                                roll chupa chups. Halvah wafer pudding powder gummies
+                                chocolate
+                                bar. Topping liquorice I love pastry tiramisu soufflé
+                                gingerbread. Tiramisu chocolate cake gummies pastry icing
+                                liquorice soufflé cupcake biscuit. I love caramels pie
+                                tiramisu
+                                muffin pie. I love gingerbread I love I love. Macaroon
+                                gingerbread liquorice sweet roll marzipan dragée apple pie
+                                cheesecake toffee.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card-fixed float-right">
+                    <div class="photo-holder mx-auto my-3 pb-1 text-center">
+                        <img class="" src="http://placehold.it/150x150">
+                    </div>
+                    <div class="photo-holder mx-auto my-3 pb-1">
+                        <h6>Ratings: <a class="" href="#">{{ user.rating }}</a></h6>
+                        <a href="#" style="text-decoration: none">
+                            <ul class="list-inline">
+
+                            </ul>
+                        </a>
+
+                        <a class="d-inline-block my-1" href="#userReviews">Reviews (N)</a>
+                        <a class="d-inline-block my-1" href="#userRecommendations">Recommendations (M)</a>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-block" style="border-bottom: 1px solid black">
+            <h5 class="card-title">Extended profile</h5>
+            {{ anchor.add(profileMenu[1]) }}
+            <div class="row">
+                <div class="col">
+                    <h6>Services:</h6>
+                    <ul class="list-unstyled">
+                        {{ list.item(user.services) }}
+
+                    </ul>
+                </div>
+                <div class="col">
+                    <h6>Price range:</h6>
+                    <ul class="list-unstyled">
+                        {{ list.item(user.price) }}
+                    </ul>
+                </div>
+                <div class="col">
+                    <h6>Area:</h6>
+                    <ul class="list-unstyled">
+                        {{ list.item(user.servedArea) }}
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h6>Children age:</h6>
+                    <ul class="list-unstyled">
+                        {{ list.item(user.age) }}
+                    </ul>
+                </div>
+                <div class="col">
+                    <h6>Number of kids</h6>
+                    <ul class="list-unstyled">
+                        <li class="list-item"><p>{{ user.number }}</p></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h6>Hours available:</h6>
+                    <ul class="list-unstyled">
+                        {{ list.item(user.hours) }}
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-2">
+                    <h6>Education:</h6>
+                    {{ user.education }}
+                </div>
+                <div class="col-12 mt-2">
+                    <h6>Experience with kids:</h6>
+                    <p>{{ user.experience }}</p>
+                </div>
+                <div class="col-12 mt-2">
+                    <h6>Additional courses and seminars:</h6>
+                </div>
+                <div class="col-12 mt-2">
+                    <h6>Philosophy and methods</h6>
+                    {{ user.philosophy }}
+                </div>
+                <div class="col-12 mt-2">
+                    <h6>Activities for kids:</h6>
+                    <p>{{ user.activities }}</p>
+                </div>
+                <div class="col-12 mt-2">
+                    <h6>Additional services:</h6>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <h5 class="card-title">Ratings, reviews and recommendations</h5>
+            {{ anchor.add(profileMenu[2]) }}
+            <div class="row">
+                <div class="col-12 mt-2">
+                    {{ rating.chart(user.rating, user.stars) }}
+                </div>
+                <div id="userReviews"></div>
+                <div class="col-12 mt-2">
+                    <h6>Reviews</h6>
+                    {% for each in user.reviews %}
+                        {{ review.content(each) }}
+
+                    {% endfor %}
+                    <a class="btn-add-panel" href="#">Show all (N) reviews ->>></a>
+                </div>
+
+                <div class="col-12 mt-2">
+                    <div id="userRecommendations"></div>
+                    <h6> Recommended by: </h6>
+                    <div class="float-left mx-3">
+                        <a href="">UserName</a>
+                        <img src="http://placehold.it/40x40"
+                             class="d-block">
+                    </div>
+
+                    <div class="float-left mx-3">
+                        <a href="">UserName</a>
+                        <img src="http://placehold.it/40x40"
+                             class="d-block">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,75 @@
+{% extends "layouts/layout.njk" %}
+
+{% set base_path = "../" %}
+{% set page_title = "BeeHelper" %}
+{% set page_description = "prototype" %}
+{% set active_page = "find" %}
+
+
+
+{% block page_script %}
+
+<script>
+    makeActive('aside-find');
+    var geocoder;
+    var map;
+    var defaultBounds;
+
+    function initMap() {
+        geocoder = new google.maps.Geocoder();
+        var mapDiv = document.getElementById("mapHolder");
+        map = new google.maps.Map(mapDiv, {
+            center: {lat: 50.4501, lng: 30.4135},
+// center: {lat: 50.4501, lng: 30.5234},
+            zoom: 12
+        });
+        defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(50.278160, 30.253885),
+            new google.maps.LatLng(50.651240, 30.827552));
+//next three lines of code are added to prevent map from being loaded partially on top left corner
+// http://stackoverflow.com/questions/17059816/google-maps-v3-load-partially-on-top-left-corner-resize-event-does-not-work?noredirect=1&lq=1
+        google.maps.event.addListenerOnce(map, 'idle', function () {
+            google.maps.event.trigger(map, 'resize');
+        });
+    }
+
+    function fieldAutocomplete(id, mark) {
+        var options = {
+            bounds: defaultBounds
+        };
+        var input = document.getElementById(id);
+        var searchbox = new google.maps.places.Autocomplete(input, options);
+        google.maps.event.addDomListener(input, 'keydown', function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+            }
+        });
+
+    }
+
+
+    $(".address-input").click(function () {
+        fieldAutocomplete(this.id)
+
+    })
+    initMap();
+    $("#price-range").slider({
+        range: true,
+        min: 0,
+        max: 150,
+        values: [15, 45],
+        slide: function (event, ui) {
+            $("#amount").val(ui.values[0] + " uah/hour" + " - " + ui.values[1] + " uah/hour");
+        }
+    });
+
+    $("#amount").val($("#price-range").slider("values", 0) + " uah/hour" +
+        " - " + $("#price-range").slider("values", 1) + " uah/hour");
+
+    $(".clockpicker").clockpicker({
+        donetext: "set time"
+    });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+{% macro add(number) %}
+    {% for n in range(0, number) -%}
+    <i class="fa fa-star-o d-inline-block"
+       aria-hidden="true"></i>
+    {%- endfor %}
+{% endmacro %}

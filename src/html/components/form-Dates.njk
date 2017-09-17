@@ -1,0 +1,58 @@
+{% import "macros/macro-datePicker.njk" as datePicker %}
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="form-group">
+            {% include "components/setDates-type.njk" %}
+        </div>
+    </div>
+
+    <div class="col-md-9 selectByDays collapse">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group " id="selDaysForm" data-toggle="button">
+                    {% include "components/dayPicker.njk" %}
+                </div>
+                <div class="row pr-5">
+                    <div class="input-daterange " id="range"
+                         data-date-week-start="1" data-date-clear-btn="true"
+                         data-date-today-highlight="true">
+
+                        <label for="startDate" class="my-label"></label>
+                        <input type="text" class="form-control col-sm-6" id="startDate"
+                               name="start-date"
+                               placeholder="Starting from:">
+
+                        <label for="endDate" class="my-label "></label>
+                        <input type="text" class="form-control col-sm-6" id="endDate"
+                               name="end-date" placeholder="End date:">
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9  selectByDates collapse">
+        <div class="row">
+            <div class="col-md-8" id="selDatesForm">
+                <div class="datepicker datepicker-inline" id="multidate">
+
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <h6>Selected dates:</h6>
+                <div id="selectedDatesList"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

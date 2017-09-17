@@ -1,0 +1,14 @@
+{% macro add(text) %}
+    {% if text === "completed" %}
+        <h5 class="mb-0 text-success">{{ text | capitalize }}</h5>
+    {% elif text === "current" %}
+        <h5 class="mb-0 text-warning">{{ text | capitalize }}</h5>
+    {% elif text === "declined" %}
+        <h5 class="mb-0 text-muted">{{ text | capitalize }}</h5>
+
+    {% elif text === "upcoming" %}
+        <h5 class="mb-0 text-info">{{ text | capitalize }}</h5>
+        {% else %}
+            <h5 class="mb-0">{{ text | capitalize }}</h5>
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,236 @@
+{% extends "layouts/layout.njk" %}
+
+{% set base_path = "../" %}
+{% set page_title = "BeeHelper" %}
+{% set page_description = "prototype" %}
+{% set active_page = "find" %}
+
+{% import "macros/macro-simpleCheckbox.njk" as checkbox %}
+{% import "macros/macro-task-card.njk" as card %}
+
+{% block main %}
+{{ super() }}
+<div>
+    <div class="alert alert-info" style="position: relative">
+        <p>This section is for displaying user's tasks (jobs). Already assigned or those which are in conversation with
+            person who need help</p>
+        <button class="btn-link m-2" style="position: absolute; bottom: 0; right: 0;"
+                data-toggle="collapse" data-target="#full-description" aria-expanded="false"
+                aria-controls="full-description" onclick="changeCollapseTrigger(this)">
+            Show full description...
+        </button>
+        <div class="collapse" id="full-description">
+            <p><em>future task</em> - scheduled job, <strong>accepted</strong> by user and <strong>confirmed</strong>
+                employer
+            </p>
+            <p><em>requests</em> - task in conversation. Request could be done by both, user and employer. User and
+                employer
+                have options to <strong> accept</strong> or <strong>decline</strong></p>
+            <p><em>current task</em> - multidate tasks (jobs) which are <strong>currently executing</strong> by user.
+            </p>
+            <p><strong>Past section</strong> is for displaying completed tasks or past conversations which </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7">
+            <div class="col">
+                <p class="d-inline-block">Show: </p>
+                <button class="btn btn-secondary active" type="button">
+                    Actual
+                </button>
+                <div class="form-check form-check-inline">
+                    {{ checkbox.checkbox("all", "checked") }}
+                    {{ checkbox.checkbox("future tasks" ) }}
+                    {{ checkbox.checkbox("requests" ) }}
+                    {{ checkbox.checkbox("current tasks" ) }}
+                </div>
+            </div>
+            <div class="col">
+                <p class="d-inline-block">Show: </p>
+                <button class="btn btn-secondary" type="button">
+                    Past
+                </button>
+                <div class="form-check form-check-inline">
+                    {{ checkbox.checkbox("all", "checked") }}
+                    {{ checkbox.checkbox("completed" ) }}
+                    {{ checkbox.checkbox("declined" ) }}
+                    {{ checkbox.checkbox("canceled" ) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="alert alert-info">
+                <p><em>"Active" and "Past" (or Archived) - radiobuttons. Assigned checkboxes have to appear after one of
+                    them is checked</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card help-entry my-4">
+    {{ card.add( {
+    "calendarNote": "true",
+    "status": "upcoming",
+    "type": "babysitting",
+    "createdBy": users.user3.name,
+    "location": "Senomanskyi Lane 16, Kiev",
+    "time": "5pm - 10pm",
+    "confirmedByEmployer": "true",
+    "confirmedByUser": "true"
+    } ) }}
+</div>
+<div class="card help-entry my-4">
+    {{ card.add( {
+    "status": "request",
+    "type": "babysitting",
+    "createdBy": users.user4.name,
+    "location": "44 Gagarina st, Kiev",
+    "time": "11am - 3pm",
+    "confirmedByEmployer": "true",
+    "confirmedByUser": "false"
+
+    } ) }}
+</div>
+<div class="card help-entry my-4">
+    {{ card.add( {
+    "status": "request",
+    "type": "transportation",
+    "createdBy": users.user5.name,
+    "locationFrom": "33 Alma-Atinskaya st, Kiev",
+    "locationTo": "56 Prazhskaya st, Kiev",
+    "timeFrom": "1 pm",
+    "timeTo": "1.30pm",
+    "confirmedByEmployer": "false",
+    "confirmedByUser": "false"
+
+    } ) }}
+</div>
+<div class="card help-entry my-4">
+    {{ card.add( {
+    "status": "current",
+    "type": "babysitting",
+    "createdBy": users.user6.name,
+    "locationFrom": "Some address",
+    "locationTo": "Another address",
+    "timeFrom": "1 pm",
+    "timeTo": "1.30pm",
+    "confirmedByEmployer": "true",
+    "confirmedByUser": "true",
+    "newRating": "true",
+    "returnAssessment": "false"
+    } ) }}
+</div>
+<div class="card help-entry my-4">
+    {{ card.add( {
+    "status": "completed",
+    "type": "babysitting",
+    "createdBy": "Key",
+    "location": "33 Alma-Atinskaya st, Kiev",
+    "time": "11am - 3pm",
+    "confirmedByEmployer": "true",
+    "confirmedByUser": "true",
+    "newRating": "true",
+    "returnAssessment": "false"
+    } ) }}
+</div>
+<div class="card help-entry my-4">
+    {{ card.add( {
+    "status": "declined",
+    "newRating": "",
+    "returnAssessment": "",
+    "type": "transportation",
+    "createdBy": "user235",
+    "locationFrom": "33 Alma-Atinskaya st, Kiev",
+    "locationTo": "56 Prazhskaya st, Kiev",
+    "timeFrom": "1 pm",
+    "timeTo": "1.30pm",
+    "confirmedByEmployer": "false",
+    "confirmedByUser": "false"
+    } ) }}
+</div>
+
+</div>
+<div class="modal fade" id="simpleDecline" tabindex="-1" role="dialog" aria-labelledby="declineProp"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="declineTask2">Decline Task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This task will be marked as "declined" for provider</p>
+                <div class='form-group'>
+
+                    <label for='decline-reason' class="my-label">Decline reason (optional)</label>
+                    <textarea id='decline-reason' name="reason" class="form-control"
+                              rows='3'></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Yes, I am not interested in this
+                    job
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="confirmTask" tabindex="-1" role="dialog" aria-labelledby="confirmForm"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmForm">Confirm Task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>After your confirmation job provider will get notification.</p>
+                <p>If he(she) already confirmed you as a possible executor this task will be assigned to you and appear
+                    on this dashboard as upcoming. In other case you'll have to wait for provider's response</p>
+                <div class='form-group'>
+
+                    <label for='decline-reason' class="my-label">Add your comments (optional)</label>
+                    <textarea id='confirm-comment' name="comment" class="form-control"
+                              rows='3'></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Yes, I am interested in this
+                    job
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block page_script %}
+<script>
+    makeActive('aside-my-todo-list');
+    function changeCollapseTrigger(e) {
+        if ($(e).attr("aria-expanded") === "false") {
+            $(e).text("Hide full description...")
+        } else {
+            $(e).text("Show full description...")
+        }
+    }
+    var options = {
+
+        container: '',
+        weekStart: 1,
+        forceParse: false,
+        multidate: true,
+        daysOfWeekDisabled: [0, 1, 2, 3, 4, 5, 6]
+    };
+
+
+    $('.datepicker-display').datepicker(options)
+
+
+</script>
+{% endblock %}
+
+

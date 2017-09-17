@@ -1,0 +1,28 @@
+{% macro add(entry) %}
+    {% if entry.checked %}
+        {% set checkmark = "fa-check-square-o" %}
+    {% else %}
+        {% set checkmark = "fa-square-o" %}
+        {% set class = "d-inline-block"%}
+    {% endif %}
+    <div class="col">
+        <div>
+            <p class="{{ class }}"><i class="fa {{ checkmark }}" aria-hidden="true"></i><i
+                        class="fa {{ entry.icon }}"
+                        aria-hidden="true"></i>
+                <small>{{ entry.text }}</small>
+            </p>
+            {% if not entry.checked %}
+                <button class="btn-link">Link</button>
+            {% endif %}
+        </div>
+        {% if entry.checked %}
+            <div>
+                <img class="d-inline-block"
+                     src="http://placehold.it/20x20">
+                <a class="d-inline-block" href="#">{{ entry.name }}</a><a
+                        class="d-inline-block"></a>
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}

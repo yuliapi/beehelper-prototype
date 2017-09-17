@@ -1,0 +1,302 @@
+{% extends "layouts/layout.njk" %}
+
+{% set base_path = "../" %}
+{% set page_title = "BeeHelper" %}
+{% set page_description = "prototype" %}
+{% set active_page = "find" %}
+
+{% import "macros/macro-simpleCheckbox.njk" as checkbox %}
+{% import "macros/macro-action-btn-link.njk" as actionButton %}
+{% import "macros/macro-result-card.njk" as card %}
+
+
+{% block main %}
+{{ super() }}
+<div>
+    <div class="alert alert-info" style="position: relative">
+        <p>This section is for.....</p>
+        <button class="btn-link m-2" style="position: absolute; bottom: 0; right: 0;"
+                data-toggle="collapse" data-target="#full-description" aria-expanded="false"
+                aria-controls="full-description" onclick="changeCollapseTrigger(this)">
+            Show full description...
+        </button>
+        <div class="collapse" id="full-description">
+            <p>some text</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7">
+            <div class="col">
+                <h2>Matching search results: </h2>
+                <p class="d-inline-block">Show: </p>
+                <div class="form-check form-check-inline">
+                    {{ checkbox.checkbox("all", "checked") }}
+                    {{ checkbox.checkbox("professionals" ) }}
+                    {{ checkbox.checkbox("not-professionals" ) }}
+                </div>
+            </div>
+            <div class="col">
+                <p class="d-inline-block">Sort by: </p>
+                <div class="form-check form-check-inline">
+                    {{ checkbox.checkbox("price", "checked") }}
+                    {{ checkbox.checkbox("rating" ) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="alert alert-info">
+                <p><em></em></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card help-entry my-4">
+
+    {{ card.add(users.user1) }}
+</div>
+
+<div class="row">
+    <a class="btn-add-panel" href="#">Show next 3 ->>></a>
+</div>
+<div class="row">
+    <div class="col-12">
+        <p class="">If you didn't find help among search results you can</p>
+    </div>
+    <div class="col-sm-6">
+        <form>
+            <fieldset class="form-group row">
+                <legend class="col-form-legend">Save your request and</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="isVisible" id="radioSaveVisible"
+                                   value="true" checked>
+                            make it visible
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="isVisible" id="radioSaveInvisible"
+                                   value="false">
+                            to try it latter (invisible for other users)
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-sm-6 text-center">
+        <p class="">or</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 text-center">
+        {{ actionButton.button("Save", "") }}
+    </div>
+    <div class="col-6 text-center">
+        {{ actionButton.button("Discard", "index.html") }}
+        <p class="small">Search request and results will be deleted</p>
+    </div>
+</div>
+<div class="modal fade" id="send-myHelp" tabindex="-1" role="dialog" aria-labelledby="send-myHelpLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="send-myHelpLabel">Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <p>To: UserName</p>
+                    <div class="form-group">
+                        <textarea class="form-control" id="message-myHelp"
+                                  placeholder="Help description will be created from search request and will be added here automatically"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label my-label">Say more (optional)</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p class="small">After sending message your help request will be saved automatically.</p>
+                <button type="button" class="btn btn-primary sendBtn">Send message</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard and close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="success-message hidden-xs-up">
+    <i class="fa fa-check-circle fa-3x" aria-hidden="true"></i>
+    <p>Your message have been sent. You can view it <a href="./user-pending.html">here</a></p>
+    <p>Your help request was saved. You can view and edit it <a href="./user-help-me.html">here</a></p>
+</div>
+{% endblock %}
+
+{% block page_templates %}
+<template id="recommended-popover-content">
+    <div>
+        <table class="table m-0">
+            <tbody>
+            <tr>
+                <td class="p-0">
+                    <div class="userpic-wrap d-inline-block">
+                        <div class="userpic-info">
+                            <div class="d-inline-flex user">
+                                <a class="d-block" onmouseenter="showInfo(this)">
+                                    <img class="" src="http://placehold.it/32x32"></a>
+                            </div>
+                            <div class="d-inline-flex popover-username">
+                                <p class="hidden-xs-up d-inline"><i class="fa fa-user"></i>UserName</p>
+                                <p class="hidden-xs-up d-inline">some info</p>
+                            </div>
+
+
+                            <div class="comment">
+                                <p class="hidden-xs-up text-justify">
+                                    <small>Sed congue dolorum an. Ei mollis persequeris per, te eum purto tincidunt.
+                                        In
+                                        malorum suscipit per. Dignissim liberavisse per ad, sed no atqui inciderint.
+                                        Te
+                                        his habeo
+                                        quaeque blandit. Malis lucilius deseruisse ex quo.
+                                    </small>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </td>
+                <td class="p-0">
+                    <div class="userpic-wrap d-inline-block">
+                        <div class="userpic-info">
+
+                            <a class="d-inline-flex" onmouseenter="showInfo(this)">
+                                <img class="" src="http://placehold.it/32x32"></a>
+
+                            <p class="hidden-xs-up text-justify comment">
+                                <small>Sed congue dolorum an. Ei mollis persequeris per, te eum purto tincidunt. In
+                                    malorum suscipit per. Dignissim liberavisse per ad, sed no atqui inciderint. Te
+                                    his habeo
+                                    quaeque blandit. Malis lucilius deseruisse ex quo.
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </td>
+                <td class="p-0">
+                    <div class="userpic-wrap d-inline-block">
+                        <div class="userpic-info no-comments">
+
+                            <a class="d-inline-flex" onmouseenter="showInfo(this)">
+                                <img class="" src="http://placehold.it/32x32"></a>
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+<template id="rating-popover-content">
+    <div class="rating-popover">
+        <div class="row">
+            <div class="col-3">
+                <a href="" class="m-0">5 stars</a>
+            </div>
+            <div class="col-6 p-0">
+                <a href="">
+                    <progress value="82" max="100"></progress>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="" class="m-0">82%</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <a href="" class="m-0">4 stars</a>
+            </div>
+            <div class="col-6 p-0">
+                <a href="">
+                    <progress value="18" max="100"></progress>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="" class="m-0">18%</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <a href="" class="m-0">3 stars</a>
+            </div>
+            <div class="col-6 p-0">
+                <a href="">
+                    <progress value="0" max="100"></progress>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="" class="m-0">0%</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <a href="" class="m-0">2 stars</a>
+            </div>
+            <div class="col-6 p-0">
+                <a href="">
+                    <progress value="0 max=" 100
+                    "></progress>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="" class="m-0">0%</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <a href="" class="m-0">1 star</a>
+            </div>
+            <div class="col-6 p-0">
+                <a href="">
+                    <progress value="0" max="100"></progress>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="" class="m-0">0%</a>
+            </div>
+        </div>
+
+    </div>
+</template>
+{% include "components/modal-sendHelp.njk" %}
+
+{% endblock %}
+
+{% block page_script %}
+<script type="text/javascript" src="../src/scripts/modalScript.js"></script>
+<script>
+    makeActive('aside-find');
+    $('.recommend').popover(
+        {
+            'template': "<div class='popover' role='tooltip'><div class='popover-arrow'></div><div class='popover-content'></div></div>",
+            'html': true,
+            'content': function () {
+                return $('#recommended-popover-content').html();
+            }
+        });
+    $('.rating').popover(
+        {
+            'template': "<div class='popover' role='tooltip'><div class='popover-arrow'></div><div class='popover-content'></div></div>",
+            'html': true,
+            'content': function () {
+                return $('#rating-popover-content').html();
+            }
+        });
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% import "macros/macro-btn-selectHelpKind.njk" as buttonKind %}
+{% macro menuButton (items) %}
+    {% for element in  items %}
+        {% if element.dataTarget %}
+            <button class="btn btn-primary  btn-border btn-custom btn-help mx-3 btnFind " type="button"
+                    data-toggle="collapse"
+                    data-target="{{ element.dataTarget }}" aria-expanded="false"
+                    aria-controls="{{ element.ariaControls }}">
+                {% if element.icon %}
+                    <i class="fa {{ element.icon }} fa-2x d-block" aria-hidden="true"></i>
+                {% endif %}
+                {{ element.text }}
+            </button>
+        {% else %}
+            {{ buttonKind.menuButton(element) }}
+
+
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+

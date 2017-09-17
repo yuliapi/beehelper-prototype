@@ -1,0 +1,338 @@
+{% extends "layouts/layout.njk" %}
+
+{% set base_path = "../" %}
+{% set page_title = "BeeHelper" %}
+{% set page_description = "prototype" %}
+{% set active_page = "find" %}
+
+{% import "macros/macro-star.njk" as star %}
+{% import "macros/macro-pageAnchor.njk" as anchor %}
+{% import "macros/macro-nav-item.njk" as navItem %}
+{% import "macros/macro-profile-th.njk" as heading %}
+{% import "macros/macro-profile-tr.njk" as row %}
+{% import "macros/macro-profile-trArr.njk" as rowArr %}
+{% import "macros/macro-profile-social.njk" as social %}
+{% import "macros/macro-simpleCheckbox.njk" as checkbox %}
+{% import "macros/macro-profile-loginWith.njk" as loginOpt %}
+
+{% block main %}
+{{ super() }}
+<div class="row">
+    <div class="" id="settings-nav">
+        <ul class="nav flex-column text-right">
+            {{ navItem.add(editProfileMenu) }}
+        </ul>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="container-fluid mx-0">
+                <div class="row">
+                    <div class="profile-card-fluid">
+                        <div class="card-block">
+                            <table class="table col profile">
+                                {{ anchor.add(editProfileMenu[0]) }}
+                                <thead>
+                                {{ heading.add(editProfileMenu[0]) }}
+                                </thead>
+                                <tbody>
+                                {{ row.add("Name", userMain.name) }}
+                                {{ row.add("Email address", userMain.email) }}
+                                {{ row.add("Password", "******") }}
+                                {{ row.add("Location", userMain.location) }}
+                                {{ row.add("Birthday", userMain.birthday) }}
+                                {{ row.add("About me", userMain.about) }}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="profile-card-fixed float-right">
+                        <div class="photo-holder mx-auto my-3 pb-1 text-center">
+                            <img class="" src="http://placehold.it/150x150">
+                            <a class="" href="#">Change photo</a>
+                        </div>
+                        <div class="photo-holder mx-auto my-3 pb-1">
+                            <h6>Ratings <a class="" href="#">{{userMain.rating}}</a>:</h6>
+                            <a href="#" style="text-decoration: none">
+                                <ul class="list-inline">
+                                    {{ star.add(5) }}
+                                </ul>
+                            </a>
+                            <a class="d-inline-block my-1" href="#">Reviews( {{ userMain.reviews | length }} )</a>
+                            <a class="d-inline-block my-1" href="#">Recommendations ( {{ userMain.recommendations |
+                                length }} )</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="container-fluid mx-0">
+                <div class="row">
+                    <div class="card-block">
+                        <table class="table col profile">
+                            {{ anchor.add(editProfileMenu[1]) }}
+                            <thead>
+                            <tr>
+                                <h4>{{ heading.add(editProfileMenu[1]) }}</h4>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                {{rowArr.add("My services", userMain.services, "d-inline-block")}}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Served area", userMain.servedArea, "d-inline-block") }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Working hours", userMain.hours, "d-inline-block") }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Preferable child age", userMain.age, "d-inline-block") }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Preferable number of kids", userMain.number) }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Additional services", userMain.additional, "d-inline-block") }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Activities for kids", userMain.activities, "d-inline-block") }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Education", userMain.education, "d-inline-block") }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Experience with kids", userMain.experience) }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Additional courses and seminars", userMain.courses) }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Philosophy and methods", userMain.philosophy, "d-inline-block") }}
+                            </tr>
+                            <tr>
+                                {{ rowArr.add("Price range", userMain.price, "d-inline-block") }}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="container-fluid mx-0">
+                <div class="row">
+                    <div class="profile-card-fluid">
+                        <div class="card-block">
+                            <table class="table col profile">
+                                {{ anchor.add(editProfileMenu[2]) }}
+                                <thead>
+                                <tr>
+                                    {{ heading.add(editProfileMenu[2]) }}
+                                    <p>Press "Link" if you want to make your social account visible to other users.</p>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="row">
+                                        <div class="col">
+                                            {{ social.add(userMain.socialAcc.fb) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ social.add(userMain.socialAcc.google) }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="row border-top-0">
+                                        <div class="col">
+                                            {{ social.add(userMain.socialAcc.insta) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ social.add(userMain.socialAcc.twitter) }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="row border-top-0">
+                                        <div class="col">
+                                            {{ social.add(userMain.socialAcc.vkontakte) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ social.add(userMain.socialAcc.odnoklassniki) }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="container-fluid mx-0">
+                <div class="row">
+                    <div class="profile-card-fluid">
+                        <div class="card-block">
+                            <form>
+                                <table class="table col profile">
+                                    {{anchor.add(editProfileMenu[3]) }}
+                                    <thead>
+                                    <tr>
+                                        <h4>{{ heading.add(editProfileMenu[3]) }}</h4>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr>
+                                        <td style="position: relative; line-height:2rem">
+                                            <p class="d-inline-block mm-0"><strong>Email notifications
+                                                are ON</strong></p>
+                                            <button class="btn" style="position: absolute; right:0">Turn
+                                                off
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <form>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    {{ checkbox.checkbox("New private inbox messdage", "checked") }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    {{ checkbox.checkbox("Request on my add", "checked") }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    {{ checkbox.checkbox("Getting response on help discussions",
+                                                    "checked")
+                                                    }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    {{ checkbox.checkbox("Actions with helps where I assigned as
+                                                    executor",
+                                                    "checked") }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    {{ checkbox.checkbox("Getting new notifications from my executors",
+                                                    "checked") }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </form>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="container-fluid mx-0">
+                <div class="row">
+                    <div class="profile-card-fluid">
+                        <div class="card-block">
+                            <table class="table col profile">
+                                {{anchor.add(editProfileMenu[4]) }}
+                                <thead>
+                                <tr>
+                                    <h4>{{ heading.add(editProfileMenu[4]) }}</h4>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <form>
+                                    <tr>
+                                        <td class="row">
+                                            <div class="form-group col">
+                                                {{ loginOpt.add(userMain.socialAcc.fb) }}
+                                            </div>
+                                            <div class="form-group col">
+                                                {{ loginOpt.add(userMain.socialAcc.google) }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="row border-top-0">
+                                            <div class="form-group col">
+                                                {{ loginOpt.add(userMain.socialAcc.twitter) }}
+                                            </div>
+                                            <div class="form-group col">
+                                                {{ loginOpt.add(userMain.socialAcc.vkontakte) }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </form>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="card mt-4">
+            <div class="container-fluid mx-0">
+                <div class="row">
+                    <div class="profile-card-fluid">
+                        <div class="card-block">
+                            <table class="table col profile">
+                                {{anchor.add(editProfileMenu[5]) }}
+                                <thead>
+                                <tr>
+                                    <h4>{{ heading.add(editProfileMenu[5]) }}</h4>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_templates %}
+<div class="modal fade" id="editUserInfo" tabindex="-1" role="dialog" aria-labelledby=""
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Edit something</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Edit form will be here</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

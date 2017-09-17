@@ -1,0 +1,7 @@
+{% macro add(item) %}
+        {% for key, value in item %}
+        <tr>
+            <h4>{{ key }}</h4>
+        </tr>
+    {% endfor %}
+{% endmacro %}

@@ -1,0 +1,110 @@
+{% import "macros/macro-btnModal.njk" as modalBtn %}
+
+{% macro add(content) %}
+    <div class="card-header">
+        <div class="row user-dash">
+            <div class="col-md-4  align-self-center">
+                <h5 class="mb-0"> {{ content.name }}</h5>
+            </div>
+            <div class="col-md-4 align-self-center">
+                <em class="mb-0">{{ content.role | capitalize }}</em>
+            </div>
+
+            <div class="col-md-4 text-right align-self-center">
+
+                <a class="btn" href="#" role="button">View full profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-12 px-0">
+                {% if content.calendarNote === "true" %}
+                    <div class="alert alert-info py-0">
+                        <p class="mb-0">
+                            <small>info block
+                            </small>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="card-aside">
+                <img src="http://placehold.it/150x150">
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="col px-0">
+                            <p class="d-inline-block">Рейтинг: </p>
+                            <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                            <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                            <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                            <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                            <i class="fa fa-star-o d-inline-block" aria-hidden="true"></i>
+                            <p class="d-inline-block">(11)</p>
+                            <button class="btn rating" type="button" data-toggle="popover"><i
+                                        class="fa fa-caret-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="col px-0">
+                            <p class="d-inline-block">Recommended by users (6)</p>
+                            <button class="btn recommend" type="button" data-toggle="popover">
+                                <i class="fa fa-caret-right"
+                                   aria-hidden="true"></i></button>
+                        </div>
+
+                    </div>
+                    <div class="col-5 w-100">
+                        <p><strong>Price: </strong>{{ content.price }}
+                        {% if content.priceFlexible === "true" %}
+                            <em>(flexible)</em>
+                            {% endif %}
+                        </p>
+                        {{ modalBtn.new("#send-myHelp", "Send messsage", "btn-warning" ) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+
+                        <a data-toggle="collapse" href="#review-card" aria-expanded="false"
+                           aria-controls="review-card">Reviews (3) </a>
+                        <div id="review-card" class="collapse ml-3">
+                            <div class="card p-2">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="http://placehold.it/40x40"
+                                             class="d-block">
+                                        <i class="fa fa-star-o d-inline-block"
+                                           aria-hidden="true"></i>
+                                        <i class="fa fa-star-o d-inline-block"
+                                           aria-hidden="true"></i>
+                                        <i class="fa fa-star-o d-inline-block"
+                                           aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-10" style="border-left: .25rem solid #eceeef;">
+                                        <div class="row">
+                                            <div class="col text-right">
+                                                <p><em>Date: 22/03/2016</em></p>
+                                            </div>
+
+
+                                        </div>
+                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing elit. Integer posuere erat a ante.
+                                        </p>
+                                        <div class="row">
+                                            <p class="d-inline-block"><em>Babysitting</em></p>
+                                            <p class="d-inline-block"><em>Total 3 tasks</em></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endmacro %}

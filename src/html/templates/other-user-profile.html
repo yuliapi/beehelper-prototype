@@ -1,0 +1,16 @@
+{% extends "layouts/layout.njk" %}
+
+{% set base_path = "../" %}
+{% set page_title = "BeeHelper" %}
+{% set page_description = "prototype" %}
+{% set active_page = "find" %}
+
+{% import "macros/macro-profile-card-header.njk" as cardheader %}
+{% import "macros/macro-profile-card-body.njk" as cardbody %}
+
+{% block page_templates %}
+{% include "components/modal-sendHelp.njk" %}
+{% endblock %}
+{% block page_script %}
+<script type="text/javascript" src="../src/scripts/modalScript.js"></script>
+{% endblock %}

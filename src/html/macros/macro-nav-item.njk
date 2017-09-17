@@ -1,0 +1,9 @@
+{% macro add(list) %}
+    {% for i in list %}
+        {% for key, value in i %}
+            <li class="nav-item">
+                <a class="nav-link" href="#{{ value }}">{{ key }}</a>
+            </li>
+        {% endfor %}
+    {% endfor %}
+{% endmacro %}

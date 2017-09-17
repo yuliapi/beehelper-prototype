@@ -1,0 +1,485 @@
+{
+  "navItems": [
+
+    {
+      "menu_item": "About project"
+    },
+    {
+      "menu_item": "Important info"
+    },
+    {
+      "menu_item": "Contact us"
+    }
+  ],
+  "asideItems": [
+    {
+      "menu_item": "find",
+      "text": "Find",
+      "menu_icon_class": "fa mt-2 fa-search",
+      "link": "user-find"
+    },
+    {
+      "menu_item": "my-todo-list",
+      "text": "My jobs",
+      "menu_icon_class": "mt-2 fa-space-shuttle",
+      "link": "user-todo"
+    },
+    {
+      "menu_item": "Help me",
+      "text": "Help me",
+      "menu_icon_class": "mt-2 fa-bath"
+    },
+    {
+      "menu_item": "Meetup",
+      "text": "My meetups",
+      "menu_icon_class": "mt-2 fa-magnet"
+    }
+  ],
+  "btnIndex": [
+    {
+      "text": "My adds"
+    },
+    {
+      "text": "My profile",
+      "link": "my-profile.html"
+    },
+    {
+      "text": "Settings"
+    }
+  ],
+  "btnHelpKind": [
+    {
+      "text": "Help",
+      "dataTarget": "#needHelpForm",
+      "ariaControls": "needHelpForm",
+      "icon": "fa-bath"
+    },
+    {
+      "text": "Job",
+      "link": "find-job.html",
+      "icon": "fa-space-shuttle"
+    },
+    {
+      "text": "Meetup",
+      "dataTarget": "#findMeetup",
+      "ariaControls": "findMeetup",
+      "icon": "fa-magnet"
+    }
+  ],
+  "btnNeedType": [
+    {
+      "text": "Babysitting",
+      "icon": "fa fa-cubes",
+      "link": "find_babysitting.html"
+    },
+    {
+      "text": "Transport",
+      "icon": "fa fa-subway",
+      "link": "find_transportation.html"
+
+    }
+  ],
+  "allDays": [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday"
+  ],
+  "trAddress": [
+    {
+      "id": "pick-up-location",
+      "name": "addressFrom",
+      "placeholder": "Pick up location:"
+    },
+    {
+      "id": "drop-off-location",
+      "name": "addressTo",
+      "placeholder": "Drop off location:"
+    }
+  ],
+  "trClock": [
+    {
+      "id": "pick-up-time",
+      "name": "pickUpTime",
+      "placeholder": "Pick up at:"
+    },
+    {
+      "id": "drop-off-time",
+      "name": "dropOffTime",
+      "placeholder": "Drop off at:"
+    }
+  ],
+  "bbAddress": [
+    {
+      "id": "bb-location",
+      "name": "need-bb-address",
+      "placeholder": "Location"
+    }
+  ],
+  "bbClock": [
+    {
+      "id": "need-from",
+      "name": "timeFrom",
+      "placeholder": "Time from:"
+    },
+    {
+      "id": "need-to",
+      "name": "timeTo",
+      "placeholder": "Time to:"
+    }
+  ],
+  "profileMenu": [
+    {
+      "General": "general"
+    },
+    {
+      "Extended profile": "extended"
+    },
+    {
+      "Reputation": "reputation"
+    }
+  ],
+  "editProfileMenu": [
+    {
+      "General": "general"
+    },
+    {
+      "Extended profile": "extended"
+    },
+    {
+      "Social links": "social"
+    },
+    {
+      "Email notifications": "notifications"
+    },
+    {
+      "Login options": "loginOpt"
+    },
+    {
+      "Reputation": "reputation"
+    }
+  ],
+  "userMain": {
+    "own": true,
+    "userId": "Id150",
+    "name": "Yulia Pishchulina",
+    "firstName": "Yulia",
+    "lastName": "Pishchulina",
+    "email": "yyy@gmail.com",
+    "birthday": "",
+    "socialAcc": {
+      "fb": {
+        "icon": "fa-facebook-square",
+        "text": "Facebook",
+        "name": "Yulia P",
+        "checked": true,
+        "login": true
+      },
+      "google": {
+        "icon": "fa-google-plus-square",
+        "text": "Google+",
+        "name": "Yulia Pishchulina",
+        "checked": true,
+        "login": false
+      },
+      "insta": {
+        "icon": "fa-instagram",
+        "text": "Instagram",
+        "name": "",
+        "checked": false,
+        "login": false
+      },
+      "twitter": {
+        "icon": "fa-twitter-square",
+        "text": "Twitter",
+        "name": "",
+        "checked": false,
+        "login": false
+      },
+      "vkontakte": {
+        "icon": "fa-vk",
+        "text": "Vkontakte",
+        "name": "",
+        "checked": false,
+        "login": false
+      },
+      "odnoklassniki": {
+        "icon": "fa-odnoklassniki-square",
+        "text": "Odnoklassniki",
+        "name": "",
+        "checked": false,
+        "login": false
+      }
+    },
+    "status": "Professional babysitter",
+    "rating": "10",
+    "stars": [
+    ],
+    "reviews": [
+      "rogfieroi",
+      "kwjfn",
+      "jrnf"
+    ],
+    "recommendations": [
+      "rec1",
+      "rec2",
+      "rec3",
+      "rec4"
+    ],
+    "price": [
+      "35-60 uah/hour"
+    ],
+    "profile": "my_owm.html",
+    "location": "Kyiv, Poznyaki",
+    "servedArea": [
+      "Kharkovskiy",
+      "Osokorki",
+      "Poznyaki"
+    ],
+    "hours": [
+      "AM",
+      "PM",
+      "ful-time",
+      "part-time"
+    ],
+    "since": "Dec, 2015",
+    "services": [
+      "Professional babysitting"
+    ],
+    "additional": [
+      "Car transportation. (Provide car seat for 3+ and booster)",
+      "Healthy food preparation for children"
+    ],
+    "age": [
+      "6-12m",
+      "1-3y",
+      "4-6y",
+      "6-10y"
+    ],
+    "number": [
+      "1-2"
+    ],
+    "education": [
+      "Bachelor, Pre-K"
+    ],
+    "experience": [
+      "Pre-K teacher for 5 years",
+      "Babysitting for 12 years (since my 14)",
+      "Experience with infants, toddlers and kids age 3-10"
+    ],
+    "courses": [
+      "Driver's license since 2007",
+      "Certified 3 month courses 'Basics of first-aid for infants and kids'",
+      "Seminar 'Dietiology for kids'",
+      "Baby's first food"
+    ],
+    "philosophy": [
+      "Montessory",
+      "dr.Komarovsky"
+    ],
+    "activities": [
+      "drawing and crafts",
+      "reading",
+      "math",
+      "calligraphy",
+      "English lessons, for toddlers and pre-K"
+    ],
+    "about": "Soufflé pie chupa chups sweet roll I love. Cookie pastry fruitcake I love gingerbread croissant gummies. Toffeesweet roll chupa chups. Halvah wafer pudding powder gummies chocolate bar. Topping liquorice I love pastry tiramisu soufflégingerbread. Tiramisu chocolate cake gummies pastry icing liquorice soufflé cupcake biscuit. I love caramels pie tiramisu muffin pie. I love gingerbread I love I love. Macaroon gingerbread liquorice sweet roll marzipan dragée applepie cheesecake toffee."
+  },
+  "users": {
+    "user1": {
+      "calendarNote": "true",
+      "userId": "Id235",
+      "name": "Angela Latte",
+      "role": "professional babysitter",
+
+      "rating": "26",
+      "stars": [
+        19,
+        5,
+        0,
+        1,
+        0
+      ],
+      "reviews": [
+        {
+          "name": "Grace",
+          "date": "16/07/2017",
+          "text": "Muffin bear claw biscuit muffin sesame snaps jujubes pastry. Macaroon chocolate soufflé lemon drops sugar plum danish icing gummies. Sugar plum cheesecake cupcake brownie candy canes icing. Bear claw chocolate sweet marshmallow chocolate jelly cake.",
+          "task": "Babysitting",
+          "total": "4",
+          "score": "5"
+        },
+        {
+          "name": "Julia-Margo",
+          "date": "28/02/2017",
+          "text": "Cookie oat cake cake pastry chupa chups cheesecake. Gingerbread tootsie roll icing sweet roll jujubes jujubes pudding. Cotton candy bear claw cheesecake sugar plum.",
+          "task": "Transportation",
+          "total": "7",
+          "score": "4"
+        }
+      ],
+      "price": "12-15 $/hour",
+      "priceFlexible": "true",
+      "profile": "angela_latte.html",
+      "location": "Kyiv, Pozniaky",
+      "servedArea": [
+        "Left Bank area"
+      ],
+      "hours": [
+        "part time",
+        "PM"
+      ],
+      "since": "Oct, 2016",
+      "services": [
+        "babysitting",
+        "transportation"
+      ],
+      "age": [
+        "3-6 years",
+        "6-10 years"
+      ],
+      "number": "1-2 children",
+      "education": "",
+      "experience": "Candy gingerbread cotton candy tootsie roll ice cream gummi bears bear claw tart ice cream. Pudding cupcake muffin wafer carrot cake powder macaroon ice cream. Dessert cookie sugar plum tart apple pie oat cake marzipan. Tiramisu gingerbread sweet roll topping tart. Fruitcake danish sweet roll tart apple pie powder tootsie roll. Tart tootsie roll candy tiramisu biscuit marzipan wafer. Caramels lemon drops donut marzipan cupcake. Pastry cookie gummies. Tootsie roll cupcake tart sugar plum bonbon brownie donut.",
+      "philosophy": "Montessori, Waldorf",
+      "activities": "Early education, cooking with kids, art lessons",
+      "about": "Soufflé pie chupa chups sweet roll I love. Cookie pastry fruitcake I love gingerbread croissant gummies. Toffee sweet roll chupa chups. Halvah wafer pudding powder gummies chocolate bar. Topping liquorice I love pastry tiramisu soufflé gingerbread. Tiramisu chocolate cake gummies pastry icing liquorice soufflé cupcake biscuit. I love caramels pie tiramisu muffin pie. I love gingerbread I love I love. Macaroon gingerbread liquorice sweet roll marzipan dragée apple pie cheesecake toffee."
+    },
+    "user2": {
+      "userId": "Id237",
+      "name": "Amy Lee",
+      "status": "",
+      "rating": "17",
+      "stars": [
+        12,
+        4,
+        1,
+        0,
+        0
+      ],
+      "reviews": [
+        {
+          "name": "Mikka",
+          "date": "01/08/2017",
+          "text": "Muffin bear claw biscuit muffin sesame snaps jujubes pastry. Macaroon chocolate soufflé lemon drops sugar plum danish icing gummies. Sugar plum cheesecake cupcake brownie candy canes icing. Bear claw chocolate sweet marshmallow chocolate jelly cake.",
+          "task": "Babysitting",
+          "total": "6",
+          "score": "4"
+        },
+        {
+          "name": "Shea Tay",
+          "date": "08/06/2016",
+          "text": "Cookie oat cake cake pastry chupa chups cheesecake. Gingerbread tootsie roll icing sweet roll jujubes jujubes pudding. Cotton candy bear claw cheesecake sugar plum.",
+          "task": "Babysitting",
+          "total": "1",
+          "score": "5"
+        }
+      ],
+      "price": [
+        "10 $/hour",
+        "barter service"
+      ],
+      "profile": "amy_lee.html",
+      "location": "Kyiv, Sviatoshyn",
+      "servedArea": [
+        "Sviatoshyn district"
+      ],
+      "hours": [
+        "AM",
+        "5-7PM"
+      ],
+      "since": "Aug, 2016",
+      "services": [
+        "babysitting"
+      ],
+      "age": [
+        "3-6 years"
+      ],
+      "number": "1 child",
+      "education": "Bachelor degree in ...",
+      "experience": "Candy gingerbread cotton candy tootsie roll ice cream gummi bears bear claw tart ice cream. Pudding cupcake muffin wafer carrot cake powder macaroon ice cream. Dessert cookie sugar plum tart apple pie oat cake marzipan. Tiramisu gingerbread sweet roll topping tart. Fruitcake danish sweet roll tart apple pie powder tootsie roll. Tart tootsie roll candy tiramisu biscuit marzipan wafer. Caramels lemon drops donut marzipan cupcake. Pastry cookie gummies. Tootsie roll cupcake tart sugar plum bonbon brownie donut.",
+      "philosophy": "Montessori, dr.Komarovsky",
+      "activities": "",
+      "about": "Soufflé pie chupa chups sweet roll I love. Cookie pastry fruitcake I love gingerbread croissant gummies. Toffee sweet roll chupa chups. Halvah wafer pudding powder gummies chocolate bar. Topping liquorice I love pastry tiramisu soufflé gingerbread. Tiramisu chocolate cake gummies pastry icing liquorice soufflé cupcake biscuit. I love caramels pie tiramisu muffin pie. I love gingerbread I love I love. Macaroon gingerbread liquorice sweet roll marzipan dragée apple pie cheesecake toffee."
+    },
+    "user3": {
+      "userId": "Id239",
+      "name": "Sally",
+      "status": "",
+      "rating": "26",
+      "stars": [
+        19,
+        5,
+        0,
+        1,
+        0
+      ],
+      "reviews": [
+        {
+          "name": "Grace",
+          "date": "16/07/2017",
+          "text": "Muffin bear claw biscuit muffin sesame snaps jujubes pastry. Macaroon chocolate soufflé lemon drops sugar plum danish icing gummies. Sugar plum cheesecake cupcake brownie candy canes icing. Bear claw chocolate sweet marshmallow chocolate jelly cake.",
+          "task": "Babysitting",
+          "total": "4",
+          "score": "5"
+        },
+        {
+          "name": "Julia-Margo",
+          "date": "28/02/2017",
+          "text": "Cookie oat cake cake pastry chupa chups cheesecake. Gingerbread tootsie roll icing sweet roll jujubes jujubes pudding. Cotton candy bear claw cheesecake sugar plum.",
+          "task": "Transportation",
+          "total": "7",
+          "score": "4"
+        }
+      ],
+      "price": [
+        "12-15 $/hour"
+      ],
+      "profile": "angela_latte.html",
+      "location": "Kyiv, Pozniaky",
+      "servedArea": [
+        "Left Bank area"
+      ],
+      "hours": [
+        "part time",
+        "PM"
+      ],
+      "since": "Oct, 2016",
+      "services": [
+        "babysitting",
+        "transportation"
+      ],
+      "age": [
+        "3-6 years",
+        "6-10 years"
+      ],
+      "number": "1-2 children",
+      "education": "",
+      "experience": "Candy gingerbread cotton candy tootsie roll ice cream gummi bears bear claw tart ice cream. Pudding cupcake muffin wafer carrot cake powder macaroon ice cream. Dessert cookie sugar plum tart apple pie oat cake marzipan. Tiramisu gingerbread sweet roll topping tart. Fruitcake danish sweet roll tart apple pie powder tootsie roll. Tart tootsie roll candy tiramisu biscuit marzipan wafer. Caramels lemon drops donut marzipan cupcake. Pastry cookie gummies. Tootsie roll cupcake tart sugar plum bonbon brownie donut.",
+      "philosophy": "Montessori, Waldorf",
+      "activities": "Early education, cooking with kids, art lessons",
+      "about": "Soufflé pie chupa chups sweet roll I love. Cookie pastry fruitcake I love gingerbread croissant gummies. Toffee sweet roll chupa chups. Halvah wafer pudding powder gummies chocolate bar. Topping liquorice I love pastry tiramisu soufflé gingerbread. Tiramisu chocolate cake gummies pastry icing liquorice soufflé cupcake biscuit. I love caramels pie tiramisu muffin pie. I love gingerbread I love I love. Macaroon gingerbread liquorice sweet roll marzipan dragée apple pie cheesecake toffee."
+    },
+    "user4": {
+      "name": "Natalie"
+    },
+    "user5": {
+      "name": "Katherine"
+    },
+    "user6": {
+      "name": "Mia"
+    }
+  },
+  "search": {
+    "babysitting": {},
+    "transportation": {}
+  },
+  "findJob":{
+    "allSelectedDates": []
+  }
+}
+
