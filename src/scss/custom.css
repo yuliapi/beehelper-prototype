@@ -20,14 +20,17 @@
     color: #ffd600 !important;
     border-color: #474B4F !important;
 }
+
 .btn-secondary {
     background-color: initial;
-    border: none;
+
 }
+
 .btn-secondary.active {
     background-color: rgba(147, 191, 0, 0.35);
     border-color: rgba(145, 189, 0, 0.35);
 }
+
 a.text-primary:hover,
 .btn-primary:hover {
     color: #fcfcfc !important;
@@ -70,10 +73,7 @@ span.navbar-toggler-icon {
 }
 
 /***************************************************************************************/
-html,
-body,
-main,
-aside {
+body, html {
     height: 100%;
 }
 
@@ -123,21 +123,16 @@ legend {
 
 /*******************************Main**************************************************/
 main {
-    margin-top: 4.5rem;
-    /*overflow-y: hidden;*/
+
+    position: relative;
+    top: 72px
 }
 
 /******************************Aside navbar******************************************/
 aside {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    /*overflow-y: hidden;*/
-    padding-left: 2px;
+    min-height: 100vh;
     max-width: 101px;
     min-width: 101px;
-    height: 100vh;
 }
 
 aside.mobile {
@@ -145,20 +140,17 @@ aside.mobile {
     min-width: 70px;
 }
 
-.sidebar-nav {
-    max-width: 104px;
-    min-width: 104px;
-}
+
 
 .sidebar-nav > ul > .nav-item {
     width: 100%;
-    height: 104px;
+    height: 101px;
 }
 
 .sidebar > .btn {
     display: inline-block;
-    height: 104px;
-    width: 100px;
+    height: 101px;
+    width: 101px;
 }
 
 .sidebar.mobile > .btn {
@@ -193,11 +185,7 @@ aside.mobile {
 
 /*************************Page content******************************************************/
 .page-content {
-    /*background-color: #00aa88;*/
-    position: absolute;
-    top: 0;
-
-    left: 100px;
+    min-height: 100vh;
     width: calc(100% - 100px);
 
 }
@@ -269,6 +257,7 @@ aside.mobile {
 .calendar-body div.selected {
     background-color: rgba(255, 214, 0, 0.39);
 }
+
 /*************************Footer*******************************************************************/
 footer {
     height: 70px;
@@ -461,11 +450,12 @@ footer .sidebar > .btn {
     height: 400px;
     overflow-y: scroll;
 }
+
 /*******************popover, popover-recommendations***********************************/
 
 .userpic-info {
     height: 32px;
-       width: 32px;
+    width: 32px;
     -webkit-transition: all 0.7s; /* For Safari 3.1 to 6.0 */
     transition: all 0.7s ease;
 
@@ -531,41 +521,51 @@ footer .sidebar > .btn {
 .rating-popover a {
     line-height: 1rem;
 }
+
 .profile-card-fixed {
     width: 200px;
 }
+
 .profile-card-fixed .photo-holder {
     width: 150px;
     font-size: 14px;
 }
+
 .profile-card-fluid {
-    width:calc(100% - 200px);
+    width: calc(100% - 200px);
 }
 
 ul.profile-social-icons .disabled {
     color: rgba(128, 128, 128, 0.66)
 }
+
 .donut {
     width: 18px;
     height: 18px;
 }
+
 .donut.color {
     fill: deeppink;
 }
+
 #settings-nav {
     width: 140px;
     font-size: 18px;
 }
+
 #settings-nav ul {
     position: sticky;
     top: 6rem;
 }
+
 .profile .first-col {
     width: 150px;
 }
-.table.profile  td {
+
+.table.profile td {
     vertical-align: middle;
 }
+
 /*************************************************************/
 .bordered-black {
     border: 1px solid black
@@ -574,7 +574,6 @@ ul.profile-social-icons .disabled {
 .bordered-red {
     border: 1px solid red;
 }
-
 
 .borderless td, .borderless th {
     border: none;

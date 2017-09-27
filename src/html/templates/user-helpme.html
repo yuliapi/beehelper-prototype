@@ -1,0 +1,323 @@
+{% extends "layouts/layout.njk" %}
+
+{% set base_path = "../" %}
+{% set page_title = "BeeHelper" %}
+{% set page_description = "prototype" %}
+{% set active_page = "helpme" %}
+
+{% import "macros/macro-simpleCheckbox.njk" as checkbox %}
+{% import "macros/macro-helpme-card.njk" as card %}
+
+{% block main %}
+{{ super() }}
+<div class="">
+    <div class="alert alert-info col-12" style="position: relative">
+        <p>This page is to display YOUR "need help" entries. </p>
+        <button class="btn-link m-2" style="position: absolute; bottom: 0; right: 0;"
+                data-toggle="collapse" data-target="#full-description" aria-expanded="false"
+                aria-controls="full-description" onclick="changeCollapseTrigger(this)">
+            Show full description...
+        </button>
+        <div class="collapse" id="full-description">
+            <p><strong>Actual:</strong></p>
+            <p><em>I need</em> - your saved help request with no potential executors. As soon as somebody have claimed
+                "need help" (or you send it as a proposal) status will changed to "request"</p>
+            <p><em>request</em> - in conversation. Any participant of conversation have an options to <strong>
+                accept</strong> or <strong>decline </strong>executor/task</p>
+            <p><em>upcoming</em> - your "need help entry" which have assigned executor</p>
+            <p><em>current</em> - multidate tasks (jobs) which are <strong>currently executing</strong> by user.
+            </p>
+            <p><strong>Past section</strong> is for displaying <em>completed</em> or <em>canceled</em>tasks</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7">
+            <div class="col">
+                <p class="d-inline-block">Show: </p>
+                <button class="btn btn-secondary active" type="button">
+                    Actual
+                </button>
+                <div class="form-check form-check-inline">
+                    {{ checkbox.checkbox("all", "checked") }}
+                    {{ checkbox.checkbox("with new messages" ) }}
+                    {{ checkbox.checkbox("requests" ) }}
+                    {{ checkbox.checkbox("upcoming tasks" ) }}
+                    {{ checkbox.checkbox("current tasks" ) }}
+                </div>
+            </div>
+            <div class="col">
+                <p class="d-inline-block">Show: </p>
+                <button class="btn btn-secondary" type="button">
+                    Past
+                </button>
+                <div class="form-check form-check-inline">
+                    {{ checkbox.checkbox("all", "checked") }}
+                    {{ checkbox.checkbox("completed" ) }}
+                    {{ checkbox.checkbox("canceled" ) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="alert alert-info">
+                <p><em>"Active" and "Past" (or Archived) - radiobuttons. Assigned checkboxes have to appear after one of
+                    them is checked</em></p>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="col">
+                <p class="text-danger d-inline-block m-0">Some of your tasks are completed and need to be rated.</p>
+                <a href="#toRate">Rate</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card help-entry my-4">
+    {{ card.add({
+    "kind": "need",
+    "calendarNote": "true",
+    "noteText": "Until task doesn't have assigned executor you can make it invisible/visible for other users and
+    initiate new search",
+    "status": "add",
+    "type": "babysitting",
+    "location": "5568 Brimbal Ave, Beverly, MA",
+    "time": "8am - 3pm",
+    "executor":"",
+    "needRate": "false"
+    } ) }}
+</div>
+<div class="card help-entry my-4">
+    {{ card.add({
+    "kind": "need",
+    "calendarNote": "true",
+    "noteText": "This help-entry have several discussions that took place before. Results of those conversations are
+    presented in right part of card body. You have to go to 'Discussion' section to be able to confirm/decline users and
+    get info about their actions: whether confirmed or denied by other participant of conversation",
+    "status": "request",
+    "type": "transportation",
+    "locationFrom": "5564 Foxrun Dr, Beverly, MA",
+    "locationTo": "167 Essex st, Beverly, MA",
+    "timeFrom": "3 pm",
+    "timeTo": "3.15pm",
+    "executor":"",
+    "needRate": "false"
+    } ) }}
+</div>
+<div class="card help-entry my-4">
+    {{ card.add({
+    "kind": "need",
+    "calendarNote": "false",
+    "noteText": "",
+    "status": "upcoming",
+    "type": "babysitting",
+    "location": "12 Main St, Beverly, MA",
+    "time": "10am - 1pm",
+    "executor": "Helen Mile",
+    "needRate": "false"
+    } ) }}
+</div>
+<div class="card help-entry my-4">
+    {{ card.add({
+    "kind": "need",
+    "calendarNote": "false",
+    "noteText": "",
+    "status": "current",
+    "type": "transportation",
+    "locationFrom": "8101 Brimbal ave, Beverly, MA",
+    "locationTo": "118 Washington St, Salem, MA 01970",
+    "timeFrom": "4 pm",
+    "timeTo": "4.45pm",
+    "executor": "Irina G.",
+    "needRate": "true"
+    } ) }}
+</div>
+<div class="card help-entry my-4" id="toRate">
+    {{ card.add({
+    "kind": "need",
+    "calendarNote": "false",
+    "noteText": "",
+    "status": "completed",
+    "type": "babysitting",
+    "location": "42 Balch St, Beverly, MA",
+    "time": "10am - 1pm",
+    "executor": "Amy",
+    "needRate": "true"
+    } ) }}
+</div>
+<div class="modal fade" id="cancelRequestModal" tabindex="-1" role="dialog"
+     aria-labelledby="cancelRequest" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelRequest">Cancel request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Cancel request will delete it. You can do it or just make it temporary invisible</p>
+                <p>If you decide cancel request all participants of discussions related to this request will be notified
+                    automatically. All discussion history will also deleted</p>
+                <p>For being polite we recommend to do this</p>
+                <form class="col-10" id="">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="rateRadio" id="r1"
+                                       value="option1" checked>
+                                Cancel and delete request
+                            </label>
+
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="rateRadio" id="r2"
+                                       value="option2">
+                                Make request invisible
+                            </label>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Save changes</button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="cancelUpcomingModal" tabindex="-1" role="dialog"
+     aria-labelledby="cancelTaskWithExecutor" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelTaskWithExecutor">Cancel task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This task has executor already assigned. We will notify him about this cancellation.</p>
+                <p>Do you want to add some personal message to this notification?</p>
+                <p>For being polite we recommend to do this</p>
+                <div class='form-group'>
+                    <label for='decline-reason-2' class="my-label">Decline message:</label>
+                    <textarea id='decline-reason-2' name="reason" class="form-control"
+                              rows='5'></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel task</button>
+                <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close </button>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="declineFutureExModal" tabindex="-1" role="dialog" aria-labelledby="declineFutureExecutor"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="declineFutureExecutor">Decline executor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12 alert alert-info">
+                    <p>To discuss: <small>is it optional or strictly required to provide decline reason</small></p>
+                </div>
+                <div class='form-group'>
+                    <label for='decline-reason-1' class="my-label">Decline reason:</label>
+                    <textarea id='decline-reason-1' name="reason" class="form-control"
+                              rows='5'></textarea>
+                </div>
+                <p>User will get notification.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Decline</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="rateModal" tabindex="-1" role="dialog" aria-labelledby="rateUser"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rateUser">Rate user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% include "components/rate.njk" %}
+            </div>
+            <div class="modal-footer">
+                <p>this form have <span class="text-danger"> required</span> fields</p>
+                <button type="button" class="btn btn-primary" disabled>Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="declineModal" tabindex="-1" role="dialog" aria-labelledby="declineForm"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="declineForm">Decline executor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class='form-group'>
+                    <label for='decline-reason' class="my-label text-danger">Decline reason:</label>
+                    <textarea id='decline-reason' name="reason" class="form-control"
+                              rows='3'></textarea>
+                </div>
+
+                {% include "components/rate.njk" %}
+            </div>
+            <div class="modal-footer">
+                <p>this form have <span class="text-danger"> required</span> fields</p>
+                <button type="button" class="btn btn-primary" disabled>Save</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block page_script %}
+<script>
+    makeActive('aside-help-me');
+    function changeCollapseTrigger(e) {
+        if ($(e).attr("aria-expanded") === "false") {
+            $(e).text("Hide full description...")
+        } else {
+            $(e).text("Show full description...")
+        }
+    }
+
+    $('.visibilityToggler').click(function () {
+        var previousStatus = $(this).attr('aria-pressed');
+//        var popover = $(this).parent().data('bs.popover')
+//        popover.config.trigger = 'manual';
+        if (previousStatus === 'true') {
+//            popover.config.content = 'Invisible for search';
+//            $(this).parent().popover('show');
+            $(this).find('i').removeClass('fa-eye').addClass('fa-eye-slash');
+
+
+        } else {
+//            popover.config.content = 'Visible for search';
+//            $(this).parent().popover('show');
+            $(this).find('i').removeClass('fa-eye-slash').addClass('fa-eye');
+
+        }
+    })
+</script>
+{% endblock %}

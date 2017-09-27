@@ -14,7 +14,7 @@ function updateOrientedContent() {
         console.log('done');
         $('aside').removeClass('hidden-xs-down');
         $('.page-content').addClass('iphone5');
-        $('footer').addClass('hidden-xs-up');
+        // $('footer').addClass('hidden-xs-up');
         adjastContentLandscape()
     }
     if (mobile) {

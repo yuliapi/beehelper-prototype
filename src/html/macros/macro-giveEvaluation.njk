@@ -1,11 +1,17 @@
 {% macro add(content) %}
-    {% if content.status === "current" %}
-        <p class="text-danger">
-            You have executed {{ content.executed }} tasks. {{ content.createdBy | capitalize }} have already rated you.
-            You'll be able to see it after rating {{ content.createdBy | capitalize }}
-        </p>
-    {% else %}
-        <p class="text-danger">You've got evaluation from {{ content.createdBy | capitalize }}. You'll be able to see it after rating
-            her</p>
+    {% if  content.kind === "can" %}
+        {% if content.status === "current" %}
+            <p class="text-danger">
+                You have executed {{ content.executed }} tasks. {{ content.createdBy | capitalize }} have already rated
+                you.
+                You'll be able to see it after rating {{ content.createdBy | capitalize }}
+            </p>
+        {% else %}
+            <p class="text-danger">You've got evaluation from {{ content.createdBy | capitalize }}. You'll be able to
+                see it after rating
+                her</p>
+        {% endif %}
+        {% else %}
+        <p class="text-danger">{{ content.executor }} have already done 3 tasks. Please rate her job</p>
     {% endif %}
 {% endmacro %}

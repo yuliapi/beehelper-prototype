@@ -1,4 +1,5 @@
 {% extends "layouts/layout.njk" %}
+{% import "macros/macro-btn-selectSearchType.njk" as buttonSearch %}
 {% import "macros/macro-btn-selectHelpKind.njk" as buttonKind %}
 
 {% set base_path = "../" %}
@@ -9,6 +10,10 @@
 
 {% block main %}
 {{ super() }}
-
 {% endblock %}
 
+{% block page_script %}
+<script>
+    makeActive('aside-meetup');
+</script>
+{% endblock %}

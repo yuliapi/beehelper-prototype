@@ -16,23 +16,29 @@
       "menu_item": "find",
       "text": "Find",
       "menu_icon_class": "fa mt-2 fa-search",
-      "link": "user-find"
+      "link": "user-find",
+      "newMessage": "false"
     },
     {
       "menu_item": "my-todo-list",
       "text": "My jobs",
       "menu_icon_class": "mt-2 fa-space-shuttle",
-      "link": "user-todo"
+      "link": "user-todo",
+      "newMessage": "false"
     },
     {
-      "menu_item": "Help me",
+      "menu_item": "help-me",
       "text": "Help me",
-      "menu_icon_class": "mt-2 fa-bath"
+      "menu_icon_class": "mt-2 fa-bath",
+      "link": "user-helpme",
+      "newMessage": "true"
     },
     {
-      "menu_item": "Meetup",
+      "menu_item": "meetup",
       "text": "My meetups",
-      "menu_icon_class": "mt-2 fa-magnet"
+      "menu_icon_class": "mt-2 fa-magnet",
+      "link": "user-meetup",
+      "newMessage": "false"
     }
   ],
   "btnIndex": [
@@ -291,7 +297,7 @@
   },
   "users": {
     "user1": {
-      "calendarNote": "true",
+      "calendarNote": "false",
       "userId": "Id235",
       "name": "Angela Latte",
       "role": "professional babysitter",

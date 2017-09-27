@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-7">
+        <div class="col-8">
             <div class="col">
                 <p class="d-inline-block">Show: </p>
                 <button class="btn btn-secondary active" type="button">
@@ -40,6 +40,7 @@
                 </button>
                 <div class="form-check form-check-inline">
                     {{ checkbox.checkbox("all", "checked") }}
+                    {{ checkbox.checkbox("with new messages" ) }}
                     {{ checkbox.checkbox("future tasks" ) }}
                     {{ checkbox.checkbox("requests" ) }}
                     {{ checkbox.checkbox("current tasks" ) }}
@@ -58,10 +59,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-4">
             <div class="alert alert-info">
                 <p><em>"Active" and "Past" (or Archived) - radiobuttons. Assigned checkboxes have to appear after one of
                     them is checked</em></p>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="col">
+                <p class="text-danger d-inline-block m-0">You need to rate some users you have worked with</p>
+                <a href="#toRate">Rate</a>
             </div>
         </div>
     </div>
@@ -69,7 +76,9 @@
 
 <div class="card help-entry my-4">
     {{ card.add( {
+    "kind": "can",
     "calendarNote": "true",
+    "endNote": "true",
     "status": "upcoming",
     "type": "babysitting",
     "createdBy": users.user3.name,
@@ -81,6 +90,7 @@
 </div>
 <div class="card help-entry my-4">
     {{ card.add( {
+    "kind": "can",
     "status": "request",
     "type": "babysitting",
     "createdBy": users.user4.name,
@@ -93,6 +103,7 @@
 </div>
 <div class="card help-entry my-4">
     {{ card.add( {
+    "kind": "can",
     "status": "request",
     "type": "transportation",
     "createdBy": users.user5.name,
@@ -105,8 +116,9 @@
 
     } ) }}
 </div>
-<div class="card help-entry my-4">
+<div class="card help-entry my-4" id="toRate">
     {{ card.add( {
+    "kind": "can",
     "status": "current",
     "type": "babysitting",
     "createdBy": users.user6.name,
@@ -122,6 +134,7 @@
 </div>
 <div class="card help-entry my-4">
     {{ card.add( {
+    "kind": "can",
     "status": "completed",
     "type": "babysitting",
     "createdBy": "Key",
@@ -135,6 +148,7 @@
 </div>
 <div class="card help-entry my-4">
     {{ card.add( {
+    "kind": "can",
     "status": "declined",
     "newRating": "",
     "returnAssessment": "",

@@ -1,0 +1,24 @@
+{% macro add(data) %}
+    {% if data.kind === "need" %}
+        <p class="d-inline-block mb-0 float-right ml-2"><em>Executor: </em>
+            <button class="btn" data-toggle="collapse"
+                    href="#viewExecutor"
+                    aria-expanded="false" aria-controls="viewExecutor"
+                    data-parent="" data-whatever="">
+                <i class="fa fa-user-o ml-2" aria-hidden="true"></i>
+                {{ data.executor }}
+            </button>
+        </p>
+    {% else %}
+        <p class="d-inline-block mb-0 float-right ml-2"><em>Created by: </em>
+
+            <button class="btn" data-toggle="collapse"
+                    href="#viewExecutor"
+                    aria-expanded="false" aria-controls="viewExecutor"
+                    data-parent="" data-whatever="">
+                <i class="fa fa-user-o ml-2" aria-hidden="true"></i>
+                {{ data.createdBy }}
+            </button>
+        </p>
+    {% endif %}
+{% endmacro %}

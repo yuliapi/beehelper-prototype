@@ -1,0 +1,142 @@
+{% import "macros/macro-taskCard-headerStatus.njk" as status %}
+{% import "macros/macro-cardHeader-executor.njk" as user %}
+{% import "macros/macro-calendar-placeholder.njk" as calendar %}
+{% import "macros/macro-taskCard-date.njk" as date %}
+{% import "macros/macro-taskCard-location.njk" as location %}
+{% import "macros/macro-giveEvaluation.njk" as evaluation %}
+{% import "macros/macro-btnModal.njk" as modalBtn %}
+{% macro add(content) %}
+    <div class="card">
+        <div class="card-header">
+            <div class="row user-dash">
+                <div class="col-md-4 custom align-self-center">
+                    {% if content.status === "add" %}
+                        {{ status.add("I need") }}
+                    {% else %}
+                        {{ status.add(content.status) }}
+                    {% endif %}
+
+                </div>
+                <div class="col-md-4 align-self-center">
+                    <h5 class="mb-0">{{ content.type | capitalize }}</h5>
+                </div>
+                <div class="col-md-4 text-right align-self-center">
+                    {% if content.status === "add" or content.status === "request" %}
+                        <a class="btn visibilityToggler"
+                           data-toggle="button"
+                           aria-pressed="true"><i class="fa fa-eye"
+                                                  aria-hidden="true"></i>
+                        </a>
+                        <button class="btn ml-0" type="button">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            Search again
+                        </button>
+                    {% else %}
+                        {{ user.add(content) }}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="row">
+                <div class="col-12 px-0">
+                    {% if content.calendarNote === "true" %}
+                        <div class="alert alert-info py-0">
+                            <p class="mb-0">
+                                <small>{{ content.noteText }}
+                                </small>
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="card-aside">
+                    {{ calendar.new() }}
+                </div>
+                <div class="col">
+                    {#********************Rating block*******************/#}
+                    <div class="row">
+                        {% if content.needRate === "true" %}
+                            <div class="col-7">
+                                {% if content.status === "current" %}
+
+                                    {{ evaluation.add(content) }}
+                                {% endif %}
+                            </div>
+                            <div class="col-5 text-center">
+                                {{ modalBtn.new("#rateModal", "Rate " + content.executor, "btn-warning") }}
+                                {% if content.status === "current" %}
+                                    {{ modalBtn.new("#declineModal", "Decline " + content.executor, "btn-warning") }}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {#****************************************************#}
+                    <div class="row">
+                        {#*****************Help information****************************#}
+                        <div class="col-7">
+                            {{ date.add(content) }}
+                        </div>
+                        {#*************************************************************#}
+                        <div class="col-5 w-100 text-center">
+                            {% if  content.status === "request" %}
+                                <div class="col">
+                                    <p class="text-warning">
+                                        <small>Исполнитель User K was declined</small>
+                                    </p>
+                                    <p class="text-success">
+                                        <small>Waiting for confirmation from User T
+                                            <em>(you have confirmed this user)</em>
+                                        </small>
+                                    </p>
+                                    <p class="text-success">
+                                        <small>Исполнитель UserS is ready to do it</small>
+                                    </p>
+                                </div>
+                                {% elif content.status === "upcoming" and content.executor %}
+                                {{ modalBtn.new("#declineFutureExModal", "Decline " + content.executor, "btn-warning") }}
+                            {% endif %}
+                            {% if content.status === "request" %}
+
+                                <button class="btn mt-3" type="button" data-toggle="collapse"
+                                        data-target="#viewDiscussions" aria-expanded="false"
+                                        aria-controls="viewDiscussions">
+                                    <i class="fa fa-comments-o mr-2"></i>
+                                    <strong>(3)</strong>Discussions
+                                    <span class="badge badge-default"><i class="fa fa-envelope"
+                                                                         aria-hidden="true"></i></span>
+                                </button>
+                            {% endif %}
+                            {% if content.status === "add" or content.status === "request" %}
+
+                                {{ modalBtn.new("#cancelRequestModal","Cancel request", "btn-warning") }}
+                                {% elif content.status === "upcoming" %}
+                                {{ modalBtn.new("#cancelUpcomingModal","Cancel task", "btn-warning") }}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            {{ location.add(content) }}
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            {% if content.status === "request" %}
+                {% include "components/discussion.njk" %}
+            {% endif %}
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-block">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+        </div>
+
+    </div>
+
+{% endmacro %}
+

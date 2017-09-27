@@ -1,0 +1,38 @@
+{% import "macros/macro-discussionUser.njk" as user %}
+<div class="collapse" id="viewDiscussions">
+    <div class="alert alert-info">
+        <ol>
+            <li>
+                Need to find clear solution for user friendly interface. From entry header user should be able to view
+                other
+                user's profile and also expand collapsed section (for now it's Collapse button is "View messages"
+            </li>
+            <li>
+                Checkmarks near usernames indicate is he(she) confirmed (or declined) this help.
+            </li>
+            <li>
+                Right side of each card header is for you actions (confirm or decline user as executor. If you already
+                made this you'll text information instead of buttons. For future: if you already confirmed (declined)
+                somebody should you be able (and where) to change it decision?
+            </li>
+        </ol>
+
+    </div>
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+        {{ user.add({
+            "name": "UserK",
+            "confirm": "true",
+            "yourConfirm": "false"
+        }) }}
+        {{ user.add({
+            "name": "UserT",
+            "confirm": "false",
+            "yourConfirm": "true"
+        }) }}
+        {{ user.add({
+            "name": "UserS",
+            "confirm": "true",
+            "newMessages": "2"
+        }) }}
+    </div>
+</div>

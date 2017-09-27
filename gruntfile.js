@@ -12,7 +12,7 @@ module.exports = function(grunt) {
      precision: 4
     },
     files: {
-     "css/style.css": "src/scss/style.scss"
+     "css/custom.css": "src/scss/custom.css"
     }
    }
   },

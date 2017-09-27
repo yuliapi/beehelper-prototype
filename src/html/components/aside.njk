@@ -1,9 +1,12 @@
-<ul class="nav bg-primary flex-column no-gutters">
+<ul class="nav flex-column no-gutters">
     {% for item in asideItems %}
-        <li class="nav-item sidebar aside-{{ item.menu_item }}">
-            <a href="{{ item.link}}.html" class="btn btn-aside px-0">
-                <i class = "fa {{ item.menu_icon_class }}"></i><br/>
+        <li class="nav-item sidebar aside-{{ item.menu_item }} bg-primary">
+            <a href="{{ item.link }}.html" class="btn btn-aside px-0">
+
+                <i class="fa {{ item.menu_icon_class }}">
+                </i><br/>
                 {{ item.text }}
+
             </a>
         </li>
     {% endfor %}

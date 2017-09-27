@@ -5,7 +5,9 @@
     <title>{{ page_title }}</title>
     <meta name="description" content="{{ page_description }}">
     <link href="{{ base_path }}normalize.css-master/normalize.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ base_path }}css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ base_path }}css/custom.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ base_path }}jquery-ui-1.12.1.custom/jquery-ui.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,100,100italic,300,300italic,700,900&subset=latin,cyrillic-ext"
@@ -16,7 +18,7 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <link rel="stylesheet" href="{{ base_path }}src/scss/bootstrap-clockpicker.css">
-    <link rel="stylesheet" href="{{ base_path }}src/scss/custom.css">
+    {#<link rel="stylesheet" href="{{ base_path }}src/scss/custom.css">#}
     <script src="https://use.fontawesome.com/ee57c8a0cc.js"></script>
 
 
@@ -29,16 +31,18 @@
     </div>
 </header>
 <main>
-    <div id="main-section" class="container-fluid h-100">
+    <div class="container-fluid">
         <div class="row">
-            {% block aside %}
-                <aside>
-                    <div class=" col-2 navbar sidebar-nav no-gutters hidden-xs-down p-0" role="navigation">
-                        {% include "components/aside.njk" %}
-                    </div>
-                </aside>
 
-            {% endblock %}
+            <aside class="navbar sidebar-nav no-gutters hidden-xs-down p-0 bg-primary" role="navigation">
+                {% block aside %}
+
+                    {% include "components/aside.njk" %}
+
+
+                {% endblock %}
+
+            </aside>
             <div class="col page-content my-4">
                 <div class="col-6 col-sm-10 mx-auto ">
 
@@ -49,13 +53,15 @@
 
                 </div>
             </div>
-            <div class="row">
-                <footer class="bg-primary hidden-sm-up fixed-bottom">
-                    {% block footer %}
-                        {% include "components/footer.njk" %}
-                    {% endblock %}
-                </footer>
-            </div>
+
+        </div>
+        <div class="row">
+
+            <footer class="bg-primary hidden-sm-up fixed-bottom">
+                {% block footer %}
+                    {% include "components/footer.njk" %}
+                {% endblock %}
+            </footer>
         </div>
         {% block page_templates %}
         {% endblock %}

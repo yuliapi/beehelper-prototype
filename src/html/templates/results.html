@@ -13,17 +13,6 @@
 {% block main %}
 {{ super() }}
 <div>
-    <div class="alert alert-info" style="position: relative">
-        <p>This section is for.....</p>
-        <button class="btn-link m-2" style="position: absolute; bottom: 0; right: 0;"
-                data-toggle="collapse" data-target="#full-description" aria-expanded="false"
-                aria-controls="full-description" onclick="changeCollapseTrigger(this)">
-            Show full description...
-        </button>
-        <div class="collapse" id="full-description">
-            <p>some text</p>
-        </div>
-    </div>
     <div class="row">
         <div class="col-7">
             <div class="col">
@@ -41,11 +30,6 @@
                     {{ checkbox.checkbox("price", "checked") }}
                     {{ checkbox.checkbox("rating" ) }}
                 </div>
-            </div>
-        </div>
-        <div class="col-5">
-            <div class="alert alert-info">
-                <p><em></em></p>
             </div>
         </div>
     </div>
