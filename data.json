@@ -24,7 +24,7 @@
       "text": "My jobs",
       "menu_icon_class": "mt-2 fa-space-shuttle",
       "link": "user-todo",
-      "newMessage": "false"
+      "newMessage": "true"
     },
     {
       "menu_item": "help-me",

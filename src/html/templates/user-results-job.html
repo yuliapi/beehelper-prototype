@@ -1,0 +1,60 @@
+{% extends "layouts/layout.njk" %}
+
+{% set base_path = "../" %}
+{% set page_title = "BeeHelper" %}
+{% set page_description = "prototype" %}
+{% set active_page = "find" %}
+
+{% import "macros/macro-simpleCheckbox.njk" as checkbox %}
+{% import "macros/macro-action-btn-link.njk" as actionButton %}
+{% import "macros/macro-resultJob-card.njk" as card %}
+
+
+{% block main %}
+{{ super() }}
+<div>
+    <div class="row">
+        <div class="col-7">
+            <div class="col">
+                <h2>Jobs for you</h2>
+                <p class="d-inline-block">Show: </p>
+                <div class="form-check form-check-inline">
+                    {{ checkbox.checkbox("all", "checked") }}
+                    {{ checkbox.checkbox("long time" ) }}
+                    {{ checkbox.checkbox("one day tasks" ) }}
+                </div>
+            </div>
+            <div class="col">
+                <p class="d-inline-block">Sort by: </p>
+                <div class="form-check form-check-inline">
+                    {{ checkbox.checkbox("date posted", "checked") }}
+                    {{ checkbox.checkbox("upcoming date" ) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card help-entry my-4">
+
+    {{ card.add ({
+    "calendarNote": "false",
+    "userId": "Id333",
+    "name": "Tatiana",
+    "role": "transportation"
+    }) }}
+</div>
+
+<div class="row">
+    <a class="btn-add-panel" href="#">Show next 3 ->>></a>
+</div>
+
+<div class="row">
+    <div class="col-6 text-center">
+        {{ actionButton.button("Save", "") }}
+    </div>
+    <div class="col-6 text-center">
+        {{ actionButton.button("Discard", "index.html") }}
+        <p class="small">Search request and results will be deleted</p>
+    </div>
+</div>
+{% endblock %}

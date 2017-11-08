@@ -3,16 +3,18 @@
 {% import "macros/macro-rating.njk" as rating %}
 {% import "macros/macro-pageAnchor.njk" as anchor %}
 
-{% macro content(user) %}
+{% macro content(user, menu) %}
 
     <div class="container-fluid mx-0">
         <div class="card-block" style="border-bottom: 1px solid black">
             <div class="row">
 
                 <div class="profile-card-fluid">
-                    <h5 class="card-title">General information:</h5>
-                    <p>{{ profileMenu[0] }} </p>
-                    {{ anchor.add(profileMenu[0]) }}
+                    {% for key, value in menu[0] %}
+                        <h5 class="card-title">{{ key }}</h5>
+                        <div id="{{ value }}" style="position: relative; top: -100px"></div>
+                    {% endfor %}
+
                     <div class="row">
                         <div class="col">
                             <h6>Location:</h6>
@@ -79,8 +81,10 @@
 
         </div>
         <div class="card-block" style="border-bottom: 1px solid black">
-            <h5 class="card-title">Extended profile</h5>
-            {{ anchor.add(profileMenu[1]) }}
+            {% for key, value in menu[1] %}
+                <h5 class="card-title">{{ key }}</h5>
+                <div id="{{ value }}" style="position: relative; top: -100px"></div>
+            {% endfor %}
             <div class="row">
                 <div class="col">
                     <h6>Services:</h6>
@@ -148,8 +152,10 @@
             </div>
         </div>
         <div class="card-block">
-            <h5 class="card-title">Ratings, reviews and recommendations</h5>
-            {{ anchor.add(profileMenu[2]) }}
+            {% for key, value in menu[2] %}
+                <h5 class="card-title">{{ key }}</h5>
+                <div id="{{ value }}" style="position: relative; top: -100px"></div>
+            {% endfor %}
             <div class="row">
                 <div class="col-12 mt-2">
                     {{ rating.chart(user.rating, user.stars) }}

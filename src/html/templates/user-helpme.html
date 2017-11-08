@@ -73,6 +73,7 @@
 </div>
 <div class="card help-entry my-4">
     {{ card.add({
+    "id": "own121",
     "kind": "need",
     "calendarNote": "true",
     "noteText": "Until task doesn't have assigned executor you can make it invisible/visible for other users and
@@ -85,8 +86,24 @@
     "needRate": "false"
     } ) }}
 </div>
+<div class="card help-entry my-4" id="searchResult">
+    {{ card.add({
+    "exampleBaby": "true",
+    "id": "own122",
+    "kind": "need",
+    "calendarNote": "false",
+    "noteText": "",
+    "status": "request",
+    "type": "babysitting(transportation)",
+    "location": "15 Pine Rd, Beverly, MA",
+    "time": "9am - 12am",
+    "executor": "",
+    "needRate": "false"
+    } ) }}
+</div>
 <div class="card help-entry my-4">
     {{ card.add({
+    "id": "own123",
     "kind": "need",
     "calendarNote": "true",
     "noteText": "This help-entry have several discussions that took place before. Results of those conversations are
@@ -104,6 +121,7 @@
 </div>
 <div class="card help-entry my-4">
     {{ card.add({
+    "id": "own124",
     "kind": "need",
     "calendarNote": "false",
     "noteText": "",
@@ -117,6 +135,7 @@
 </div>
 <div class="card help-entry my-4">
     {{ card.add({
+    "id": "own125",
     "kind": "need",
     "calendarNote": "false",
     "noteText": "",
@@ -132,6 +151,7 @@
 </div>
 <div class="card help-entry my-4" id="toRate">
     {{ card.add({
+    "id": "own126",
     "kind": "need",
     "calendarNote": "false",
     "noteText": "",
@@ -227,7 +247,9 @@
             </div>
             <div class="modal-body">
                 <div class="col-12 alert alert-info">
-                    <p>To discuss: <small>is it optional or strictly required to provide decline reason</small></p>
+                    <p>To discuss:
+                        <small>is it optional or strictly required to provide decline reason</small>
+                    </p>
                 </div>
                 <div class='form-group'>
                     <label for='decline-reason-1' class="my-label">Decline reason:</label>
@@ -285,6 +307,33 @@
             <div class="modal-footer">
                 <p>this form have <span class="text-danger"> required</span> fields</p>
                 <button type="button" class="btn btn-primary" disabled>Save</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editHelp"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editHelp">Edit help</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <h4>Questions to discuss</h4>
+                    <ol>
+                        <li>Should user be able to edit his help-request at any time or until it has no assigned
+                            executors ?
+                        </li>
+                        <li>Perhaps participants of all unfinished discussions (if they still haven't declined or
+                            haven't declined by user) would be notified about changes
+                        </li>
+                    </ol>
+                </div>
 
             </div>
         </div>

@@ -66,7 +66,10 @@ $('#selectDate').on("focusout", function () {
 
 //************************************************//
 function makeActive(item) {
-    $("." + item).addClass('active');
+    var target = $("." + item)
+    target.addClass('active');
+    var id = target.attr("data-id")
+    $("#badge-" + id).removeClass("text-primary").addClass("text-inverse")
 }
 function collapseParent(e) {
     var parent = $(e).parent();
@@ -136,7 +139,7 @@ function displaySelectedDates(dates) {
         var p = $("<p class='d-inline-block'></p>");
         var index = allDates.indexOf(e)
         var button = $("<button type='button' class='close' onclick='updateSelectedDates(this)'> <span aria-hidden='true'>&times;</span></button>");
-        var text = (e.getDate() + " " + monthNames[e.getMonth()] + " "  + e.getFullYear());
+        var text = (e.getDate() + " " + monthNames[e.getMonth()] + " " + e.getFullYear());
         button.attr("data-index", index);
         p.text(text)
         div.append(p);
@@ -153,13 +156,13 @@ function updateSelectedDates(target) {
         allDates.splice(indexToRemove, 1);
     }
     var updateDates = []
-    allDates.forEach(function(e) {
-        var date = (e.getFullYear()+ ", " + (e.getMonth()+1) + ", " + e.getDate())
+    allDates.forEach(function (e) {
+        var date = (e.getFullYear() + ", " + (e.getMonth() + 1) + ", " + e.getDate())
         console.log(date);
         updateDates.push(new Date(date))
     })
     console.log(updateDates)
-       $(".datepicker").datepicker('setDates', updateDates);
+    $(".datepicker").datepicker('setDates', updateDates);
 }
 
 $(function () {

@@ -1,0 +1,48 @@
+{% import "macros/macro-btnModal.njk" as modalBtn %}
+{% macro add(content, link) %}
+    <div class="card-header">
+        <div class="row user-dash">
+            <div class="col-md-4  align-self-center">
+                <h5 class="mb-0"> {{ content.name }}</h5>
+            </div>
+            <div class="col-md-4 align-self-center">
+                <em class="mb-0">{{ content.role | capitalize }}</em>
+            </div>
+
+            <div class="col-md-4 text-right align-self-center">
+
+                <a class="btn" href="#" role="button">View full profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-12 px-0">
+                {% if content.calendarNote === "true" %}
+                    <div class="alert alert-info py-0">
+                        <p class="mb-0">
+                            <small>info block
+                            </small>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-7">
+                        <p>Description of task</p>
+
+                    </div>
+                    <div class="col-5 w-100">
+
+                        {{ modalBtn.new("#send-myHelp", "Send messsage", "btn-warning" ) }}
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endmacro %}
