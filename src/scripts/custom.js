@@ -14,10 +14,11 @@ $('.btnFind').click(function () {
 //remove text from placeholder and add it to label
 $("input").focus(function () {
     var placeholder = $(this).attr('placeholder');
-    if (placeholder === 'move marker on map or start typing address') {
-        placeholder = "Location";
-    }
-    ;
+    // console.log('ddd')
+    // if (placeholder === 'move marker on map or start typing address') {
+    //     placeholder = "Location";
+    // }
+    // ;
     if (placeholder) {
         var label = getLabel($(this).attr('id'))
         // var label = $("label[for='" + $(this).attr('id') + "']");

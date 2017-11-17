@@ -6,52 +6,155 @@
 {% set active_page = "find" %}
 
 
-
 {% block page_script %}
 
 <script>
+
     makeActive('aside-find');
-    var geocoder;
+    var form = $("form").attr('id');
     var map;
-    var defaultBounds;
+    var marker, markerB;
+    var autocomplete;
+    var myLocation;
+    var geocoder;
 
     function initMap() {
-        geocoder = new google.maps.Geocoder();
-        var mapDiv = document.getElementById("mapHolder");
-        map = new google.maps.Map(mapDiv, {
-            center: {lat: 50.4501, lng: 30.4135},
-// center: {lat: 50.4501, lng: 30.5234},
-            zoom: 12
-        });
-        defaultBounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(50.278160, 30.253885),
-            new google.maps.LatLng(50.651240, 30.827552));
-//next three lines of code are added to prevent map from being loaded partially on top left corner
-// http://stackoverflow.com/questions/17059816/google-maps-v3-load-partially-on-top-left-corner-resize-event-does-not-work?noredirect=1&lq=1
-        google.maps.event.addListenerOnce(map, 'idle', function () {
-            google.maps.event.trigger(map, 'resize');
-        });
-    }
-
-    function fieldAutocomplete(id, mark) {
-        var options = {
-            bounds: defaultBounds
+        var mapOptions = {
+            zoom: 10
         };
-        var input = document.getElementById(id);
-        var searchbox = new google.maps.places.Autocomplete(input, options);
-        google.maps.event.addDomListener(input, 'keydown', function (e) {
-            if (e.keyCode == 13) {
-                e.preventDefault();
+        var mapDiv = document.getElementById("mapHolder");
+        map = new google.maps.Map(mapDiv, mapOptions);
+        // Get GEOLOCATION
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                myLocation = new google.maps.LatLng(position.coords.latitude,
+                    position.coords.longitude);
+
+                map.setCenter(myLocation);
+                if (form === 'babysitting-find' || form === 'find-job') {
+                    marker = new google.maps.Marker({
+                        position: myLocation,
+                        map: map,
+                        draggable: true
+                    });
+                } else {
+                    marker = new google.maps.Marker({
+                        position: myLocation,
+                        map: map,
+                        draggable: true,
+                        label: "A",
+                        title: "pick-up"
+                    });
+
+                    markerB = new google.maps.Marker({
+                        position: myLocation,
+                        map: map,
+                        draggable: true,
+                        label: "B",
+                        title: "drop-off"
+                    });
+
+                    markerB.addListener("dragend", markerDraged, function () {
+                        handleNoGeolocation(true);
+                    });
+                }
+                marker.addListener("dragend", markerDraged, function () {
+                    handleNoGeolocation(true);
+                });
+            })
+        } else {
+            // Browser doesn't support Geolocation
+            handleNoGeolocation(false);
+        }
+    }
+    function markerDraged() {
+        var field
+        if (this.label && this.label === "A") {
+            field = "#pick-up-location"
+        }
+        if (this.label && this.label === "B") {
+            field = "#drop-off-location"
+        }
+        if (!this.label) {
+            field = "#bb-location"
+        }
+        geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({'location': this.position}, function (results, status) {
+            if (status === 'OK') {
+                $(field).val(results[0].formatted_address)
+            } else {
+                window.alert('Geocoder failed due to: ' + status);
             }
         });
+    }
+    function handleNoGeolocation(errorFlag) {
+
+        if (errorFlag) {
+            var content = 'Error: The Geolocation service failed.';
+        } else {
+            var content = 'Error: Your browser doesn\'t support geolocation.';
+        }
+
+        var options = {
+            map: map,
+            position: new google.maps.LatLng(60, 105),
+            content: content
+        };
+
+        map.setCenter(options.position);
+        marker = new google.maps.Marker({
+            position: options.position,
+            map: map,
+            draggable: true
+        });
 
     }
+    function fieldAutocomplete(id) {
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(id)),
+            {
+                types: ['geocode'],
+                'myId': id
+            });
+        var circle = new google.maps.Circle({
+            center: myLocation,
+            radius: 10000
+        });
+        autocomplete.setBounds(circle.getBounds());
+        autocomplete.addListener('place_changed', placeMarker);
+    }
 
+    function placeMarker() {
+        var place = autocomplete.getPlace();
+        var latLng = place.geometry.location;
+
+
+        if (form === "transportation-find" && autocomplete.myId === "drop-off-location") {
+            markerB.setPosition(latLng)
+        } else {
+            marker.setPosition(latLng);
+        }
+        if (form === "transportation-find") {
+            var allMarkers = [marker, markerB];
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < allMarkers.length; i++) {
+                bounds.extend(allMarkers[i].getPosition());
+            }
+            map.fitBounds(bounds);
+        } else {
+            map.setCenter(latLng)
+        }
+    }
 
     $(".address-input").click(function () {
-        fieldAutocomplete(this.id)
+        this.value = "";
+        var fieldId = this.id;
 
+        if (form === "transportation-find" && fieldId === "drop-off-location") {
+        }
+        fieldAutocomplete(fieldId)
     })
+
     initMap();
     $("#price-range").slider({
         range: true,
