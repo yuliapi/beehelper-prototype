@@ -297,6 +297,7 @@
   },
   "users": {
     "user1": {
+      "href": "other-user-profile-angela_latte.html",
       "calendarNote": "false",
       "userId": "Id235",
       "name": "Angela Latte",
@@ -356,6 +357,7 @@
       "about": "Soufflé pie chupa chups sweet roll I love. Cookie pastry fruitcake I love gingerbread croissant gummies. Toffee sweet roll chupa chups. Halvah wafer pudding powder gummies chocolate bar. Topping liquorice I love pastry tiramisu soufflé gingerbread. Tiramisu chocolate cake gummies pastry icing liquorice soufflé cupcake biscuit. I love caramels pie tiramisu muffin pie. I love gingerbread I love I love. Macaroon gingerbread liquorice sweet roll marzipan dragée apple pie cheesecake toffee."
     },
     "user2": {
+      "href": "other-user-profile-amy_lee.html",
       "userId": "Id237",
       "name": "Amy Lee",
       "status": "",

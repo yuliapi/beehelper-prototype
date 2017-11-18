@@ -84,7 +84,7 @@
                             {{ date.add(content) }}
                         </div>
                         {#*************************************************************#}
-                        <div class="col-5 w-100 text-center">
+                        <div class="col-5 w-100 text-center card-right-block">
                             {% if  content.status === "request" and content.exampleBaby !== "true" %}
                                 <div class="col">
                                     <p class="text-warning">
@@ -121,11 +121,16 @@
                                     <span class="badge badge-default"><i class="fa fa-envelope"
                                                                          aria-hidden="true"></i></span>
                                 </button>
+                                {% else %}
+                                <button class="btn mt-3" type="button">Discussions
+                                    <span class="badge badge-default"><i class="fa fa-envelope"
+                                                                         aria-hidden="true"></i></span>
+                                </button>
                             {% endif %}
                             {% if content.status === "add" or content.status === "request" %}
 
                                 {{ modalBtn.new("#cancelRequestModal","Cancel request", "btn-warning") }}
-                                {% elif content.status === "upcoming" %}
+                                {% elif content.status !== "completed" %}
                                 {{ modalBtn.new("#cancelUpcomingModal","Cancel task", "btn-warning") }}
                             {% endif %}
 
