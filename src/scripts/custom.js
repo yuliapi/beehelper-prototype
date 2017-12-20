@@ -1,12 +1,8 @@
-// $(document).ready(function () {
-//
-//
-// });
 var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
 
-var allDates = []
+var allDates = [];
 
 $('.btnFind').click(function () {
     collapseParent(this)
@@ -14,16 +10,10 @@ $('.btnFind').click(function () {
 //remove text from placeholder and add it to label
 $("input").focus(function () {
     var placeholder = $(this).attr('placeholder');
-    // console.log('ddd')
-    // if (placeholder === 'move marker on map or start typing address') {
-    //     placeholder = "Location";
-    // }
-    // ;
+
     if (placeholder) {
-        var label = getLabel($(this).attr('id'))
-        // var label = $("label[for='" + $(this).attr('id') + "']");
-        var labelText = placeholder;
-        label.html(labelText);
+        var label = getLabel($(this).attr('id'));
+        label.html(placeholder);
         $(this).attr('placeholder', '')
     }
 });
@@ -32,7 +22,6 @@ $("input").focus(function () {
 $('.label-btn').click(function () {
     var icon = getIcon($(this));
     if (!$(this).attr('aria-pressed') || $(this).attr('aria-pressed') === "false") {
-        console.log(icon);
         icon.addClass('mark-checked');
     }
     if ($(this).attr('aria-pressed') && $(this).attr('aria-pressed') === "true") {
@@ -59,7 +48,7 @@ $('#selectDate').on("focusout", function () {
         for (var i = 0; i < allCheckbox.length; i++) {
             var label = getLabel($(allCheckbox[i]).attr('id'));
             var icon = getIcon($(label));
-            $(icon).removeClass('mark-checked')
+            $(icon).removeClass('mark-checked');
             $(label).attr('aria-pressed', "false");
         }
     }
@@ -67,9 +56,9 @@ $('#selectDate').on("focusout", function () {
 
 //************************************************//
 function makeActive(item) {
-    var target = $("." + item)
+    var target = $("." + item);
     target.addClass('active');
-    var id = target.attr("data-id")
+    var id = target.attr("data-id");
     $("#badge-" + id).removeClass("text-primary").addClass("text-inverse")
 }
 function collapseParent(e) {
@@ -78,14 +67,11 @@ function collapseParent(e) {
 }
 
 function getLabel(e) {
-    var label = $("label[for='" + e + "']");
-    return label;
+    return  $("label[for='" + e + "']");
 }
 
 function getIcon(i) {
-    var icon = $(i).find('i');
-
-    return icon;
+     return $(i).find('i');
 }
 
 function radioHandleClick(e) {
@@ -94,24 +80,20 @@ function radioHandleClick(e) {
     if (checked === 'days') {
         $(".selectByDays").removeClass('collapse');
         $(".selectByDates").addClass("collapse");
-
         var optionsDataRange = {
-
             container: '#range',
             weekStart: 1,
             forceParse: false,
             clearBtn: true
-        }
+        };
         $('.input-daterange').datepicker(optionsDataRange);
 
     } else {
-
         var options = {
             multidate: true,
             todayHighlight: true,
             weekStart: 1,
-            clearBtn: true,
-
+            clearBtn: true
         };
         $(".selectByDays").addClass('collapse');
         $(".selectByDates").removeClass('collapse');
@@ -129,20 +111,16 @@ function getDates(e) {
 }
 
 function displaySelectedDates(dates) {
-
-
     var parentDiv = $('#selectedDatesList');
     parentDiv.empty();
-
     dates.forEach(function (e) {
-
         var div = $("<div class='d-inline-block'></div>");
         var p = $("<p class='d-inline-block'></p>");
-        var index = allDates.indexOf(e)
+        var index = allDates.indexOf(e);
         var button = $("<button type='button' class='close' onclick='updateSelectedDates(this)'> <span aria-hidden='true'>&times;</span></button>");
         var text = (e.getDate() + " " + monthNames[e.getMonth()] + " " + e.getFullYear());
         button.attr("data-index", index);
-        p.text(text)
+        p.text(text);
         div.append(p);
         div.append(button);
         parentDiv.append(div);
@@ -151,18 +129,16 @@ function displaySelectedDates(dates) {
 
 function updateSelectedDates(target) {
     $(target).parent("div").remove();
-
     var indexToRemove = $(target).attr("data-index");
     if (indexToRemove > -1) {
         allDates.splice(indexToRemove, 1);
     }
-    var updateDates = []
+    var updateDates = [];
     allDates.forEach(function (e) {
-        var date = (e.getFullYear() + ", " + (e.getMonth() + 1) + ", " + e.getDate())
-        console.log(date);
+        var date = (e.getFullYear() + ", " + (e.getMonth() + 1) + ", " + e.getDate());
         updateDates.push(new Date(date))
-    })
-    console.log(updateDates)
+    });
+
     $(".datepicker").datepicker('setDates', updateDates);
 }
 
@@ -171,12 +147,12 @@ $(function () {
         trigger: 'hover',
         container: 'body'
     })
-})
+});
 $(function () {
     $('[data-toggle="tooltip"]').tooltip({
         trigger: 'hover'
     })
-})
+});
 
 $('.recommend').popover(
     {

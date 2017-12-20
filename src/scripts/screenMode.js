@@ -18,7 +18,7 @@ function updateOrientedContent() {
         adjastContentLandscape()
     }
     if (mobile) {
-        iconMobileMode()
+        iconMobileMode();
         var screen = getOrientation();
 
         if (screen.indexOf('landscape') > -1) {
@@ -27,7 +27,7 @@ function updateOrientedContent() {
             adjastContentPortrait()
         }
     } else {
-        iconDesktopMode()
+        iconDesktopMode();
         adjastContentLandscape()
     }
 

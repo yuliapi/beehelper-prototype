@@ -9,20 +9,27 @@
 
 
 {% block main %}
-{{ super() }}
-<div class="btn-holder text-center">
-    {{ buttonSearch.menuButton( btnHelpKind ) }}
-</div>
-<div class="collapse" id="needHelpForm">
+    {{ super() }}
     <div class="btn-holder text-center">
-        {% for element in btnNeedType %}
-        {{ buttonKind.menuButton( element) }}
-        {% endfor %}
+        {{ buttonSearch.menuButton( btnHelpKind ) }}
     </div>
-</div>
+    <div class="collapse" id="needHelpForm">
+        <div class="btn-holder text-center">
+            {% for element in btnNeedType %}
+                {{ buttonKind.menuButton( element) }}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="collapse" id="playdateForm">
+        <div class="btn-holder text-center">
+            {% for element in btnPlaydateType %}
+                {{ buttonKind.menuButton( element) }}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 {% block page_script %}
-<script>
-    makeActive('aside-find');
-</script>
+    <script>
+        makeActive('aside-find');
+    </script>
 {% endblock %}

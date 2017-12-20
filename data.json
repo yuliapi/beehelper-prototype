@@ -35,7 +35,7 @@
     },
     {
       "menu_item": "meetup",
-      "text": "My meetups",
+      "text": "Playdates",
       "menu_icon_class": "mt-2 fa-magnet",
       "link": "user-meetup",
       "newMessage": "false"
@@ -66,9 +66,9 @@
       "icon": "fa-space-shuttle"
     },
     {
-      "text": "Meetup",
-      "dataTarget": "#findMeetup",
-      "ariaControls": "findMeetup",
+      "text": "Playdate",
+      "dataTarget": "#playdateForm",
+      "ariaControls": "playdateForm",
       "icon": "fa-magnet"
     }
   ],
@@ -76,13 +76,30 @@
     {
       "text": "Babysitting",
       "icon": "fa fa-cubes",
-      "link": "find_babysitting.html"
+      "link": "find_babysitting.html",
+      "disabled": ""
     },
     {
       "text": "Transport",
       "icon": "fa fa-subway",
-      "link": "find_transportation.html"
+      "link": "find_transportation.html",
+      "disabled": ""
 
+    }
+  ],
+
+  "btnPlaydateType": [
+    {
+      "text": "Find",
+      "icon": "fa fa-paw",
+      "link": "#",
+      "disabled": "disabled"
+    },
+    {
+      "text": "Create own",
+      "icon": "fa fa-cubes",
+      "link": "#",
+      "disabled": "disabled"
     }
   ],
   "allDays": [

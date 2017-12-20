@@ -1,4 +1,3 @@
-
 var firstContact = true;
 $('#send-myHelp').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
@@ -14,11 +13,11 @@ $('#send-myHelp').on('show.bs.modal', function (event) {
 function modalActions(button) {
     $("#send-myHelp").find(".sendBtn").click(function () {
         var modalBody = $(this).parent().parent().find('.modal-body');
-        var modalHeader = $(this).parent().parent().find('.modal-header')
-        var modalFooter = $(this).parent().parent().find('.modal-footer')
+        var modalHeader = $(this).parent().parent().find('.modal-header');
+        var modalFooter = $(this).parent().parent().find('.modal-footer');
         modalFooter.find('.btn-primary').remove();
         modalFooter.find('p').remove();
-        modalFooter.find(".btn-secondary").text('Close')
+        modalFooter.find(".btn-secondary").text('Close');
         modalHeader.remove();
         modalBody.empty();
         var template = $(".success-message");
