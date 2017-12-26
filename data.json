@@ -15,21 +15,21 @@
     {
       "menu_item": "find",
       "text": "Find",
-      "menu_icon_class": "fa mt-2 fa-search",
+      "menu_icon_class": "fa-search",
       "link": "user-find",
       "newMessage": "false"
     },
     {
       "menu_item": "my-todo-list",
       "text": "My jobs",
-      "menu_icon_class": "mt-2 fa-space-shuttle",
+      "menu_icon_class": "fa-space-shuttle",
       "link": "user-todo",
       "newMessage": "true"
     },
     {
       "menu_item": "help-me",
       "text": "Help me",
-      "menu_icon_class": "mt-2 fa-bath",
+      "menu_icon_class": "fa-bath",
       "link": "user-helpme",
       "newMessage": "true"
     },
