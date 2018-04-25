@@ -10,7 +10,9 @@ are willing to provide a service either get a help from people you can trust to 
 - time sharing
 - activity sharing 
 <br>This  prototype  is a result of general requirement collection phase and visualizing of general application flows.
+
 [Project documentation](https://github.com/yuliapi/beehelper-prototype/blob/master/beehelper-prototype_description.pdf)
+
 [Live demo](http://yuliapi.github.io/projects/beehelper-prototype/templates/index.html)
 
 ## Getting started
